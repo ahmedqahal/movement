@@ -4,6 +4,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // GitHub Pages serves project sites from /<repo>/. Set at build time so
+  // local dev and root-domain hosts (Netlify/Vercel) stay on '/'.
+  base: process.env.VITE_BASE || '/',
   plugins: [
     react(),
     VitePWA({
