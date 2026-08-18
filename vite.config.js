@@ -28,7 +28,10 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
+        // webp included so the 47 illustrations are genuinely available offline —
+        // without it the app installs, claims offline support, then shows blanks
+        globPatterns: ['**/*.{js,css,html,svg,png,webp,ico,woff2}'],
+        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: 'index.html',
       },
       devOptions: {

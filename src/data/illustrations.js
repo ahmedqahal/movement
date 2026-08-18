@@ -14,7 +14,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'mechanical',
     title: 'Mechanical movement',
-    file: '/illustrations/mechanical.jpg',
+    file: '/illustrations/mechanical.webp',
     prompt:
       'A full mechanical watch movement seen from directly above: a large mainspring barrel, a train of interlocking brass gears, an escapement with an anchor-shaped pallet fork, a large balance wheel with a fine spiral hairspring, a small white sub-seconds dial near the bottom, and a winding crown on a stem at the right edge. ' +
       STYLE,
@@ -34,7 +34,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'escapement',
     title: 'Lever escapement close-up',
-    file: '/illustrations/escapement.jpg',
+    file: '/illustrations/escapement.webp',
     prompt:
       'A close-up macro view of a Swiss lever watch escapement: a club-toothed steel escape wheel meshing with an anchor-shaped pallet fork tipped with two small red ruby pallet stones, and beside them the lower rim of a brass balance wheel with its red impulse roller jewel. ' +
       STYLE,
@@ -51,7 +51,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'balance',
     title: 'Balance & hairspring',
-    file: '/illustrations/balance.jpg',
+    file: '/illustrations/balance.webp',
     prompt:
       'A close-up macro view of a watch balance wheel assembly: a brass balance wheel rim with small timing screws around its edge, a very fine blued-steel spiral hairspring above it, mounted under a polished steel balance cock with a small red jewel in a gold setting at its centre. ' +
       STYLE,
@@ -68,7 +68,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'automatic',
     title: 'Automatic winding',
-    file: '/illustrations/automatic.jpg',
+    file: '/illustrations/automatic.webp',
     prompt:
       'An automatic watch self-winding mechanism seen from above: a large semicircular metal rotor weight sweeping over small reduction gear wheels and a mainspring barrel with a ratchet wheel, in brass and grey steel. ' +
       STYLE,
@@ -86,7 +86,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'keyless',
     title: 'Keyless works (wind & set)',
-    file: '/illustrations/keyless.jpg',
+    file: '/illustrations/keyless.webp',
     prompt:
       'A close-up of a watch keyless works seen from the dial side: a winding stem entering from the right with a fluted crown, a sliding clutch pinion on the stem, a winding pinion, a yoke and a setting lever with their springs, and two small setting wheels, all in grey steel and brass on the mainplate. ' +
       STYLE,
@@ -103,7 +103,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'chronograph',
     title: 'Chronograph works',
-    file: '/illustrations/chronograph.jpg',
+    file: '/illustrations/chronograph.webp',
     prompt:
       'A close-up of a mechanical chronograph mechanism seen from above: a ruby-red column wheel with six upright columns at the centre-left, steel operating levers resting on it, a coupling clutch wheel, a large chronograph seconds runner wheel in brass, a minute-counter wheel, and two steel hammers resting on heart-shaped cams. ' +
       STYLE,
@@ -119,7 +119,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'calendar',
     title: 'Calendar (date works)',
-    file: '/illustrations/calendar.jpg',
+    file: '/illustrations/calendar.webp',
     prompt:
       'A close-up of a watch date mechanism seen from the dial side: a large flat ring around the outside with numbers 1 to 31 printed on it and fine teeth on its inner edge, a date driving wheel with a small finger, a sprung date jumper lever pressing into the ring teeth, and a quick-set corrector wheel, in brass and grey steel. ' +
       STYLE,
@@ -136,7 +136,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'quartz',
     title: 'Quartz movement',
-    file: '/illustrations/quartz.jpg',
+    file: '/illustrations/quartz.webp',
     prompt:
       'A close-up of an analog quartz watch movement seen from above: a round silver battery cell on the left, a small black integrated-circuit chip, a tiny silver quartz crystal canister, a copper wire coil wound on a bobbin, a small stepper motor rotor, and a few small gear wheels, on a printed circuit board with fine copper traces. ' +
       STYLE,
@@ -153,7 +153,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'case',
     title: 'Case cross-section',
-    file: '/illustrations/case.jpg',
+    file: '/illustrations/case.webp',
     prompt:
       'A cross-section cutaway diagram of a wristwatch case seen from the side: a domed sapphire crystal on top, a bezel ring, black rubber O-ring gaskets shown as small dark circles in their grooves, the steel case band, the movement and dial in the middle, a screw-down caseback at the bottom with visible threads, and a crown on a threaded tube at the right. ' +
       STYLE,
@@ -173,7 +173,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'tools',
     title: 'The watchmaker’s bench',
-    file: '/illustrations/tools.jpg',
+    file: '/illustrations/tools.webp',
     prompt:
       'A neat flat-lay of watchmaking tools arranged on a plain cream paper background, seen from directly above: a set of small screwdrivers in a row, fine pointed tweezers, a jeweller’s loupe, a movement holder, a spring-bar tool, a dust blower, small oil pots with fine oilers, and a caseback opener. ' +
       STYLE,
@@ -192,7 +192,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'mainspring',
     title: 'Mainspring & barrel',
-    file: '/illustrations/mainspring.jpg',
+    file: '/illustrations/mainspring.webp',
     prompt:
       'A watch mainspring barrel seen from above with its lid removed and resting beside it: the open toothed barrel drum showing a flat blue-steel mainspring coiled in a tight spiral inside, the central arbor with its hook standing in the middle, and the separate barrel lid lying next to the drum. ' +
       STYLE,
@@ -209,7 +209,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'shock',
     title: 'Shock protection (Incabloc)',
-    file: '/illustrations/shock.jpg',
+    file: '/illustrations/shock.webp',
     prompt:
       'An exploded view of a watch shock protection setting, its parts floating apart in a vertical stack, clearly separated with visible gaps between each part: at the top a small lyre-shaped spring clip in steel, below it a flat round ruby cap jewel, below that a pierced ruby hole jewel in a polished brass chaton setting, and at the bottom the steel block of the mainplate with a conical seat, and a fine balance staff pivot pointing up into the hole jewel. ' +
       STYLE,
@@ -226,7 +226,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'train',
     title: 'Gear train, exploded',
-    file: '/illustrations/train.jpg',
+    file: '/illustrations/train.webp',
     prompt:
       'Five watch wheels laid out in a neat row from left to right on plain paper, clearly separated with visible gaps between each wheel, seen from a slight angle so their arbors and pinions are visible: a large toothed mainspring barrel, then a large brass wheel with cut-out spokes, then a slightly smaller brass wheel, then a smaller brass wheel, and finally a small steel escape wheel with pointed club-shaped teeth. Each wheel stands on a fine steel arbor with a small toothed pinion beneath it, and their sizes step down evenly from left to right. ' +
       STYLE,
@@ -243,7 +243,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'hands',
     title: 'Fitting the hands',
-    file: '/illustrations/hands.jpg',
+    file: '/illustrations/hands.webp',
     prompt:
       'A watch dial seen from directly above with its three hands lifted slightly above it: a short hour hand, a longer minute hand, and a fine seconds hand, each floating just above its own arbor at the centre of the dial. Above the hands hover two hollow-tipped brass hand-setting pushers, and a thin clear plastic dial protector sheet lies partly across the dial. The dial face is completely blank — plain cream with only small minute markers, no numerals and no writing of any kind. ' +
       STYLE,
@@ -261,7 +261,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'eta6497',
     title: 'ETA 6497 top plate',
-    file: '/illustrations/eta6497.jpg',
+    file: '/illustrations/eta6497.webp',
     prompt:
       'A large hand-wound pocket-watch movement seen from directly above, in the style of an ETA Unitas 6497: a big round movement with wide flat bridges covering the left half, a large toothed ratchet wheel and a smaller crown wheel at the top left, a long narrow train bridge, a balance wheel with blued hairspring under a shaped balance cock at the lower right, a small sub-seconds dial opening at the left, and a winding stem with crown at the right edge. Generously spaced parts, few and large components. Realistic, plain and industrial — a real production movement, not steampunk or fantasy. ' +
       STYLE,
@@ -280,7 +280,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'nh35',
     title: 'Seiko NH35 top plate',
-    file: '/illustrations/nh35.jpg',
+    file: '/illustrations/nh35.webp',
     prompt:
       'A modern Japanese automatic watch movement seen from directly above with its rotor removed, in the style of a Seiko NH35: a compact round movement, an automatic winding bridge across the upper half carrying two small wheels and a distinctive slim two-clawed pawl lever pivoting on an eccentric, a large toothed ratchet wheel, a balance wheel with hairspring at the lower right under a slim balance cock, and a winding stem with crown at the right edge. Plain matte grey plates, minimal decoration. Realistic, plain and industrial — a real mass-produced movement, not steampunk or fantasy. ' +
       STYLE,
@@ -298,7 +298,7 @@ export const ILLUSTRATIONS = [
   {
     id: 'service',
     title: 'Teardown order (exploded)',
-    file: '/illustrations/service-sequence.jpg',
+    file: '/illustrations/service-sequence.webp',
     prompt:
       'A mechanical watch movement exploded into a vertical stack showing the order it comes apart, the layers floating one above the other and clearly separated with visible gaps. ' +
       STYLE,

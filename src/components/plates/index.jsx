@@ -321,7 +321,7 @@ export const PLATES = [
     caption:
       'The complete escapement: a 15-tooth club-tooth escape wheel, the pallet fork with its entry (receiving) and exit (discharging) pallet stones, banking pins, and the roller with its safety crescent and guard pin.',
     source: 'after Kelly, A Practical Course in Horology (1944), ch. 3',
-    Component: PlateImage('/illustrations/plate-escapement-geometry.jpg'),
+    Component: PlateImage('/illustrations/plate-escapement-geometry.webp'),
   },
   {
     id: 'lock-draw-impulse',
@@ -329,7 +329,7 @@ export const PLATES = [
     caption:
       'The three actions of every beat. The tooth locks on the pallet; “draw” holds the fork safely against its banking pin; then the tooth’s impulse face drives the pallet, sending impulse to the balance.',
     source: 'after Kelly, A Practical Course in Horology (1944), ch. 3',
-    Component: PlateImage('/illustrations/plate-lock-draw-impulse.jpg'),
+    Component: PlateImage('/illustrations/plate-lock-draw-impulse.webp'),
   },
   {
     id: 'balance-truing',
@@ -337,7 +337,7 @@ export const PLATES = [
     caption:
       'A true balance sits flat (its rim in one plane, perpendicular to the staff axis) and round (every point of the rim the same distance from the staff). Truing bends the rim until both hold.',
     source: 'after the Joseph Bulova School of Watch Making, Unit 2',
-    Component: PlateImage('/illustrations/plate-balance-truing.jpg'),
+    Component: PlateImage('/illustrations/plate-balance-truing.webp'),
   },
   {
     id: 'hairspring-forms',
@@ -345,7 +345,7 @@ export const PLATES = [
     caption:
       'A flat spring has its stud in the plane of the coils, so the centre of gravity wanders. The Breguet “overcoil” raises the outer coil over the body, re-centring the action for better isochronism.',
     source: 'after Kelly, A Practical Course in Horology (1944), ch. 4',
-    Component: PlateImage('/illustrations/plate-hairspring-forms.jpg'),
+    Component: PlateImage('/illustrations/plate-hairspring-forms.webp'),
   },
   {
     id: 'compensating-balance',
@@ -353,7 +353,7 @@ export const PLATES = [
     caption:
       'A bimetallic rim (brass outside, steel inside) cut near each arm. Heat makes the brass expand more, curling the free ends inward to keep timing steady — the classic cure for temperature error.',
     source: 'after Kelly, A Practical Course in Horology (1944), ch. 4',
-    Component: PlateImage('/illustrations/plate-compensating-balance.jpg'),
+    Component: PlateImage('/illustrations/plate-compensating-balance.webp'),
   },
   {
     id: 'depthing',
@@ -361,6 +361,6 @@ export const PLATES = [
     caption:
       'Power passes from a wheel to the next pinion. For a smooth, low-friction transfer their pitch circles must just touch at the line of centres — too shallow or too deep and the watch loses amplitude.',
     source: 'after Kelly, A Practical Course in Horology (1944), ch. 1–2',
-    Component: PlateImage('/illustrations/plate-depthing.jpg'),
+    Component: PlateImage('/illustrations/plate-depthing.webp'),
   },
 ]
