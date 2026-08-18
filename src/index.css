@@ -2590,7 +2590,9 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 18px;
+    /* clear the status bar / Dynamic Island when running as an installed
+       PWA or inside the iOS (Capacitor) shell */
+    padding: calc(12px + env(safe-area-inset-top)) 18px 12px;
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
@@ -2607,7 +2609,7 @@ button {
     padding: 10px 14px;
     border-bottom: 1px solid var(--border);
     position: sticky;
-    top: 57px;
+    top: calc(57px + env(safe-area-inset-top));
     background: var(--bg);
     z-index: 19;
   }
@@ -2625,7 +2627,7 @@ button {
     background: var(--brass-soft);
   }
   .content {
-    padding: 24px 18px 70px;
+    padding: 24px 18px calc(70px + env(safe-area-inset-bottom));
   }
   .grid--2,
   .grid--3 {

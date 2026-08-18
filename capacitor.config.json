@@ -1,0 +1,9 @@
+{
+  "appId": "com.ahmedqahal.movement",
+  "appName": "Movement",
+  "webDir": "dist",
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#14110f"
+  }
+}
