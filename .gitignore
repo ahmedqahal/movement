@@ -27,3 +27,6 @@ DerivedData/
 
 # Copyrighted reference books — local study material, never published
 references/
+
+# built IPA (rebuild from the archive; too large and rebuildable)
+appstore/*.ipa
