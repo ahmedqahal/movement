@@ -3,6 +3,7 @@
 import { Gear } from './diagrams/primitives'
 import { PLATES } from './plates/index.jsx'
 import LessonIllustration from './LessonIllustration.jsx'
+import asset from '../lib/asset.js'
 
 const C = {
   brass: '#d0a84f',
@@ -491,7 +492,7 @@ export default function StepFigure({ name }) {
   }
   // An illustrated version supersedes the original SVG figure where one exists.
   const img = FIG_IMAGES[name]
-  if (img) return <img className="fig-img" src={img} alt="" loading="lazy" />
+  if (img) return <img className="fig-img" src={asset(img)} alt="" loading="lazy" />
   const Cmp = FIGURES[name]
   if (!Cmp) return null
   return <Cmp />

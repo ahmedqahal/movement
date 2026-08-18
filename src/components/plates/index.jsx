@@ -1,3 +1,4 @@
+import asset from '../../lib/asset.js'
 // Technical plates — clean, labelled SVG recreations of classic
 // watchmaking figures (after Kelly, A Practical Course in Horology, 1944,
 // and the Joseph Bulova School of Watch Making). Drawn from scratch as
@@ -311,7 +312,7 @@ function PlateDepthing() {
 // its id, title, caption and source; only the artwork changed.
 const PlateImage = (file) =>
   function PlateArt() {
-    return <img className="plate-img" src={file} alt="" loading="lazy" />
+    return <img className="plate-img" src={asset(file)} alt="" loading="lazy" />
   }
 
 export const PLATES = [

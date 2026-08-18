@@ -272,6 +272,20 @@ export const REFERENCE = [
       { heading: 'A note on accuracy', body: 'Where classic and modern practice differ (for example, old cleaning methods used cyanide, long since replaced by modern cleaning solutions), this app follows current safe practice while keeping the underlying principles the classics teach so well.' },
     ],
   },
+  {
+    id: 'disclaimer',
+    title: 'Safety notice & disclaimer',
+    icon: 'book',
+    summary: 'What this app is, what it isn’t, and how to use it safely.',
+    sections: [
+      { heading: 'What this app is', body: 'Movement is an educational reference for people learning to maintain and repair their own watches. It explains principles and standard practice, written from general horological knowledge and cross-checked against the reference works credited in “Sources & further reading”.' },
+      { heading: 'It is not a substitute for training or a service manual', body: 'Watchmaking is a skilled trade. Nothing here replaces hands-on instruction, nor the manufacturer’s own technical documentation for a specific calibre. Where a calibre has an official service sheet, that sheet wins over anything written here.' },
+      { heading: 'You work at your own risk', body: 'You are responsible for your own safety and for whatever you work on. Watch repair involves genuine hazards — tensioned mainsprings and spring bars that can launch parts at your eyes, solvents and cleaning fluids that need ventilation, sharp case knives, lithium cells, and on vintage pieces, radioactive radium lume. Read the Workshop & Safety track before you start, wear eye protection, and stop when a job is beyond your tools or experience.' },
+      { heading: 'Practise on something you can afford to lose', body: 'Learn on scrap movements and cheap watches, not on an heirloom. A £20 practice movement teaches the same lessons as a valuable one, and forgives the mistakes everybody makes early on.' },
+      { heading: 'Value, warranty and irreversible work', body: 'Opening a watch can void its warranty and always voids its water resistance until it is resealed and pressure-tested. Refinishing a case, redialling or reluming is irreversible and usually reduces a collectable watch’s value — see “Case refinishing & dial ethics” before you commit.' },
+      { heading: 'No liability', body: 'This app is provided as-is, without warranty of any kind. Its authors accept no liability for damage, injury or loss arising from its use. If you are in any doubt about a repair, take the watch to a qualified watchmaker — that is often the cheaper outcome anyway.' },
+    ],
+  },
 ]
 
 export function getArticle(id) {

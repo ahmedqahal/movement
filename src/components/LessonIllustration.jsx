@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ILLUSTRATIONS } from '../data/illustrations.js'
+import asset from '../lib/asset.js'
 
 // An illustrated plate embedded inside a lesson step: the artwork with its
 // numbered hotspots, a caption line for the selected part, and a link through
@@ -16,7 +17,7 @@ export default function LessonIllustration({ id }) {
   return (
     <div className="lesson-illus">
       <div className="lesson-illus__stage">
-        <img src={plate.file} alt={plate.title} onError={() => setOk(false)} />
+        <img src={asset(plate.file)} alt={plate.title} onError={() => setOk(false)} />
         {plate.hotspots.map((h, i) => (
           <button
             key={i}

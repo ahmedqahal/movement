@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import asset from '../lib/asset.js'
 
 // A painterly raster illustration with an interactive hotspot overlay.
 // The image supplies the finish; the app supplies accurate labels.
@@ -69,7 +70,7 @@ export default function IllustratedPlate({ plate }) {
     <div className="illus">
       <div className={`illus-stage ${calib ? 'illus-stage--calib' : ''}`} onClick={onStageClick}>
         <img
-          src={plate.file}
+          src={asset(plate.file)}
           alt={plate.title}
           className="illus-img"
           onLoad={() => setStatus('ok')}
