@@ -24,3 +24,6 @@ ios/App/build/
 ios/App/Pods/
 ios/App/.swiftpm/
 DerivedData/
+
+# Copyrighted reference books — local study material, never published
+references/
