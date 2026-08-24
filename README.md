@@ -63,9 +63,18 @@ The build output is a static site. Config is included for three hosts:
 
 - **Netlify** — `netlify.toml`; `npx netlify-cli deploy --prod`
 - **Vercel** — `vercel.json`; `npx vercel --prod`
-- **GitHub Pages** — `.github/workflows/deploy.yml`, deploys on push to `main`
-  (enable Settings → Pages → Source: GitHub Actions). For a project subpath, set
-  `base: '/<repo>/'` in `vite.config.js` — asset paths already resolve through
+- **GitHub Pages** — live at <https://ahmedqahal.github.io/movement/>, served from
+  the `gh-pages` branch (Settings → Pages → Source: *Deploy from a branch*, branch
+  `gh-pages`, folder `/`). Deployment is manual — build with the repo subpath, then
+  publish `dist/`:
+
+  ```bash
+  VITE_BASE=/movement/ npm run build
+  npx gh-pages -d dist
+  ```
+
+  `VITE_BASE` sets Vite's `base` at build time only, so `npm run dev` and the
+  root-domain hosts above stay on `/`. Asset paths resolve through
   `src/lib/asset.js`, so nothing else needs changing.
 
 ## Sources & safety
