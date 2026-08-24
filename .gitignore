@@ -30,3 +30,10 @@ references/
 
 # built IPA (rebuild from the archive; too large and rebuildable)
 appstore/*.ipa
+
+# App Review correspondence — personal contact details; this repo is public
+appstore/review-case.txt
+appstore/review-delay-enquiry.txt
+
+# Finder-duplicated Capacitor config files (identical to config.xml)
+ios/App/App/config [0-9].xml
