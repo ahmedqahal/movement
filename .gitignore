@@ -37,3 +37,6 @@ appstore/review-delay-enquiry.txt
 
 # Finder-duplicated Capacitor config files (identical to config.xml)
 ios/App/App/config [0-9].xml
+
+# Signing/export config — build tooling, not app source
+appstore/ExportOptions.plist
