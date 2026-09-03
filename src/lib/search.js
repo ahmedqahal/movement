@@ -164,6 +164,22 @@ function buildIndex() {
     })
   }
 
+  // Bench tools / hubs with their own pages
+  out.push({
+    type: 'Tool',
+    title: 'Timegrapher',
+    subtitle: 'Time a watch by ear — rate and beat error from the mic.',
+    path: '/timegrapher',
+    kw: 'timegrapher timing machine rate beat error s/day bph microphone regulate tick amplitude',
+  })
+  out.push({
+    type: 'Tool',
+    title: 'Sourcing & Parts',
+    subtitle: 'Tool kits by level, where to buy, and reading part numbers.',
+    path: '/sourcing',
+    kw: 'sourcing parts suppliers material house cousins otto frei esslinger tools kit shopping buy donor movement oils grease moebius consumables part number',
+  })
+
   // Precompute lowercase haystacks used by the scorer.
   for (const e of out) {
     e._t = e.title.toLowerCase()

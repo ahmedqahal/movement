@@ -19,6 +19,8 @@ import {
   IconBulb,
   IconGear,
   IconCamera,
+  IconPulse,
+  IconCart,
 } from './components/Icons.jsx'
 import SearchModal from './components/SearchModal.jsx'
 import Home from './pages/Home.jsx'
@@ -36,6 +38,8 @@ import Cheatsheets from './pages/Cheatsheets.jsx'
 import TestYourself from './pages/TestYourself.jsx'
 import Movements from './pages/Movements.jsx'
 import Illustrated from './pages/Illustrated.jsx'
+import Timegrapher from './pages/Timegrapher.jsx'
+import Sourcing from './pages/Sourcing.jsx'
 import PracticeLog from './pages/PracticeLog.jsx'
 
 const NAV = [
@@ -53,7 +57,9 @@ const NAV = [
       { to: '/diagnose', label: 'Diagnose', icon: IconStethoscope },
       { to: '/reference', label: 'Reference', icon: IconBook },
       { to: '/tools', label: 'Toolkit', icon: IconTools },
+      { to: '/sourcing', label: 'Sourcing & Parts', icon: IconCart },
       { to: '/calculators', label: 'Calculators', icon: IconCalc },
+      { to: '/timegrapher', label: 'Timegrapher', icon: IconPulse },
       { to: '/cheatsheets', label: 'Cheat-sheets', icon: IconPrint },
       { to: '/glossary', label: 'Glossary', icon: IconGlossary },
     ],
@@ -220,6 +226,8 @@ export default function App() {
           <Route path="/test" element={<TestYourself />} />
           <Route path="/movements" element={<Movements />} />
           <Route path="/illustrated" element={<Illustrated />} />
+          <Route path="/timegrapher" element={<Timegrapher />} />
+          <Route path="/sourcing" element={<Sourcing />} />
           <Route path="/diagnose" element={<Diagnose />} />
           <Route path="/calculators" element={<Calculators />} />
           <Route path="/cheatsheets" element={<Cheatsheets />} />

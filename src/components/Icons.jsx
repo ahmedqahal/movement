@@ -223,3 +223,17 @@ export const IconLayers = (p) => (
     <path d="M3 13l9 5 9-5" />
   </S>
 )
+
+export const IconPulse = (p) => (
+  <S {...p}>
+    <path d="M2 12h4l2.2-6.5L12 18l2.4-8 1.6 2H22" />
+  </S>
+)
+
+export const IconCart = (p) => (
+  <S {...p}>
+    <circle cx="9" cy="20" r="1.4" />
+    <circle cx="18" cy="20" r="1.4" />
+    <path d="M2 3h2.3l2.3 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6" />
+  </S>
+)

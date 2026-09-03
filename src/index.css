@@ -3021,3 +3021,123 @@ button {
     background: #eee !important;
   }
 }
+
+/* ============================================================
+   Sourcing & Parts hub
+   ============================================================ */
+.src-section { margin-top: 30px; }
+.src-section > h2,
+.src-section__head h2 { font-family: var(--font-display); font-size: 1.35rem; margin: 0 0 12px; }
+.src-section__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.src-tiers { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.src-kit { padding: 20px 22px; }
+.src-kit h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 4px; }
+.src-kit__blurb { color: var(--text-dim); margin: 0 0 16px; max-width: 66ch; }
+.src-kit__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.src-kit__list li { display: flex; gap: 11px; align-items: flex-start; }
+.src-kit__box { flex: 0 0 auto; width: 16px; height: 16px; margin-top: 2px; border: 1.5px solid var(--brass-line); border-radius: 4px; }
+.src-kit__list b { display: block; font-weight: 600; }
+.src-kit__list span { color: var(--text-dim); font-size: 0.9rem; }
+.src-suppliers { margin-bottom: 18px; }
+.src-suppliers h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); margin: 0 0 10px; }
+.src-supplier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.src-supplier { padding: 15px 16px; }
+.src-supplier__top { display: flex; flex-direction: column; gap: 3px; margin-bottom: 7px; }
+.src-supplier__name { font-weight: 600; color: var(--brass); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+.src-supplier__name:hover { color: var(--brass-bright); }
+.src-supplier__carries { font-size: 0.76rem; color: var(--text-faint); }
+.src-supplier p { margin: 0; font-size: 0.88rem; color: var(--text-dim); }
+.src-guide { display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 12px; }
+.src-guide__item { padding: 16px 18px; }
+.src-guide__item h3 { font-size: 1rem; margin: 0 0 6px; }
+.src-guide__item p { margin: 0; color: var(--text-dim); font-size: 0.9rem; }
+.src-consumables { padding: 4px 2px; overflow-x: auto; }
+.src-consumables table { width: 100%; border-collapse: collapse; min-width: 380px; }
+.src-consumables th, .src-consumables td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--border-soft); vertical-align: top; font-size: 0.9rem; }
+.src-consumables th { color: var(--text-faint); font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.src-consumables tr:last-child td { border-bottom: none; }
+.src-note { padding: 10px 14px 4px; color: var(--text-faint); font-size: 0.82rem; margin: 0; }
+.src-disclaimer { margin: 26px 0 0; color: var(--text-faint); font-size: 0.82rem; max-width: 70ch; }
+
+/* ============================================================
+   Timegrapher
+   ============================================================ */
+.tg-controls { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.tg-bph { display: flex; flex-direction: column; gap: 4px; font-size: 0.76rem; color: var(--text-faint); }
+.tg-bph select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 10px; font: inherit; }
+.tg-stop { background: var(--ruby) !important; border-color: var(--ruby) !important; color: #fff !important; }
+.tg-error { padding: 14px 16px; color: var(--ruby); box-shadow: inset 3px 0 0 var(--ruby); }
+.tg-layout { display: grid; grid-template-columns: 1fr 320px; gap: 16px; align-items: start; }
+.tg-readouts { display: grid; gap: 12px; }
+.tg-readout { padding: 16px 18px; display: flex; flex-direction: column; gap: 5px; }
+.tg-readout--emerald { box-shadow: inset 3px 0 0 var(--emerald); }
+.tg-readout--brass { box-shadow: inset 3px 0 0 var(--brass); }
+.tg-readout--ruby { box-shadow: inset 3px 0 0 var(--ruby); }
+.tg-readout__label { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); }
+.tg-readout__value { font-family: var(--font-display); font-size: 2.4rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.tg-readout__value--sm { font-size: 1.6rem; }
+.tg-readout__value small { font-size: 0.85rem; color: var(--text-dim); margin-left: 6px; font-family: var(--font-body); font-variant-numeric: normal; }
+.tg-readout__hint { font-size: 0.76rem; color: var(--text-faint); }
+.tg-trace { padding: 14px 16px; }
+.tg-trace__head { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 10px; }
+.tg-trace__legend { display: inline-flex; align-items: center; gap: 5px; }
+.tg-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; }
+.tg-dot--tick { background: var(--text); }
+.tg-dot--tock { background: var(--brass); }
+.tg-canvas { width: 300px; max-width: 100%; height: auto; display: block; margin: 0 auto; background: var(--bg); border-radius: var(--radius-sm); border: 1px solid var(--border-soft); }
+.tg-trace__status { font-size: 0.8rem; color: var(--text-dim); margin-top: 8px; text-align: center; }
+.tg-signal { display: flex; align-items: center; gap: 12px; margin: 16px 0 4px; font-size: 0.82rem; color: var(--text-faint); }
+.tg-signal__bar { flex: 1; max-width: 220px; height: 7px; background: var(--surface-2); border-radius: 5px; overflow: hidden; }
+.tg-signal__bar > div { height: 100%; background: var(--emerald); transition: width 0.3s; }
+.tg-tips { padding: 18px 20px; margin-top: 20px; }
+.tg-tips h3 { margin: 0 0 10px; font-size: 1.05rem; }
+.tg-tips ul { margin: 0 0 14px; padding-left: 20px; display: grid; gap: 6px; color: var(--text-dim); font-size: 0.9rem; }
+.tg-honest { margin: 0; padding-top: 12px; border-top: 1px solid var(--border-soft); color: var(--text-dim); font-size: 0.86rem; line-height: 1.55; }
+@media (max-width: 720px) { .tg-layout { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Practice Log — service logbook additions
+   ============================================================ */
+.field__opt { color: var(--text-faint); font-weight: 400; font-size: 0.8em; }
+.field-triple { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.part-row { display: grid; grid-template-columns: 1fr 96px auto; gap: 8px; margin-bottom: 8px; align-items: center; }
+.due-banner { display: flex; align-items: center; gap: 14px; padding: 14px 18px; margin-bottom: 16px; box-shadow: inset 3px 0 0 var(--brass); }
+.due-banner > svg { color: var(--brass); flex: 0 0 auto; }
+.due-banner__text { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.due-banner__text b { font-weight: 600; }
+.due-banner__text span { font-size: 0.84rem; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; }
+.log-viewtabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.watch-list { display: grid; gap: 14px; }
+.watch-card { padding: 18px 20px; }
+.watch-card__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.watch-card__head h3 { margin: 0 0 2px; font-size: 1.1rem; }
+.watch-card__meta { font-size: 0.82rem; color: var(--text-faint); }
+.watch-card__actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.watch-card__chart { display: flex; align-items: center; gap: 12px; padding: 6px 0 12px; border-bottom: 1px solid var(--border-soft); margin-bottom: 10px; }
+.watch-card__chart-label { font-size: 0.8rem; color: var(--text-dim); }
+.watch-timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.watch-timeline li { display: flex; align-items: center; gap: 12px; padding: 7px 8px; border-radius: 8px; cursor: pointer; }
+.watch-timeline li:hover { background: var(--surface-2); }
+.watch-timeline__date { font-variant-numeric: tabular-nums; font-size: 0.82rem; color: var(--text-faint); flex: 0 0 auto; width: 88px; }
+.watch-timeline__work { flex: 1; font-size: 0.9rem; }
+.watch-timeline__work em { color: var(--text-dim); font-style: normal; }
+.rate-spark { flex: 0 0 auto; }
+.rate-spark__zero { stroke: var(--border); stroke-width: 1; stroke-dasharray: 3 3; }
+.rate-spark__line { stroke: var(--brass); stroke-width: 1.6; }
+.rate-spark__dot { fill: var(--brass); }
+.due-flag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--brass); font-weight: 600; margin-bottom: 6px; }
+.due-flag.overdue { color: var(--ruby); }
+
+/* Printable per-watch service report (hidden except when printing) */
+.print-report { display: none; }
+@media print {
+  .log-grid, .watch-list, .log-viewtabs, .log-filters, .log-tagbar, .log-stats, .due-banner { display: none !important; }
+  .print-report { display: block !important; color: #000 !important; }
+  .print-report h1 { font-family: var(--font-display); font-size: 20pt; margin: 0 0 4px; }
+  .print-report__sub { color: #444; margin: 0 0 16px; font-size: 10pt; }
+  .print-report__entry { margin-bottom: 12px; break-inside: avoid; page-break-inside: avoid; }
+  .print-report__entry h2 { font-size: 12pt; margin: 0 0 3px; }
+  .print-report__entry h2 span { font-weight: 400; color: #555; }
+  .print-report__entry p, .print-report__entry ul { margin: 2px 0; font-size: 10pt; }
+  .print-report__total { font-weight: 700; margin-top: 14px; }
+}

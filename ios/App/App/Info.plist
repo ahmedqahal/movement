@@ -70,5 +70,7 @@
 	<string>Movement uses the camera so you can photograph the watches and parts you are working on and attach the photos to your own private practice-log entries. Photos stay on your device.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Movement lets you attach photos from your library to your own private practice-log entries. Photos stay on your device.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Movement uses the microphone only for the built-in timegrapher, to listen to a watch's ticking and measure its rate and beat error. Audio is analysed live on your device and never recorded, saved, or sent anywhere.</string>
 </dict>
 </plist>
