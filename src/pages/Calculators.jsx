@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { BATTERIES } from '../data/batteries.js'
 
 /* ---- small building blocks ---- */
@@ -333,6 +333,184 @@ function BatteryLookup() {
   )
 }
 
+/* ---- On-screen ruler (calibrated to a real object) ---- */
+const RULER_REFS = {
+  card: { label: 'Bank / ID card', w: 85.6, h: 53.98, shape: 'rect' },
+  quarter: { label: 'US quarter', w: 24.26, shape: 'circle' },
+  euro1: { label: '1 € coin', w: 23.25, shape: 'circle' },
+  gbp1: { label: 'UK £1 coin', w: 23.43, shape: 'circle' },
+}
+const DEFAULT_PPM = 96 / 25.4 // ~3.78 CSS px per mm at nominal 96 dpi
+
+function ScreenRuler() {
+  const readPpm = () => {
+    try {
+      const v = parseFloat(localStorage.getItem('movement.ruler.ppm'))
+      if (Number.isFinite(v) && v > 0) return v
+    } catch {
+      /* ignore */
+    }
+    return DEFAULT_PPM
+  }
+  const [ppm, setPpm] = useState(readPpm)
+  const [calibrating, setCalibrating] = useState(false)
+  const [refKey, setRefKey] = useState('card')
+  const [caliper, setCaliper] = useState({ a: 30, b: 170 })
+  const [trackW, setTrackW] = useState(320)
+  const trackRef = useRef(null)
+  const ref = RULER_REFS[refKey]
+  const calibrated = (() => {
+    try {
+      return !!parseFloat(localStorage.getItem('movement.ruler.ppm'))
+    } catch {
+      return false
+    }
+  })()
+
+  useEffect(() => {
+    const el = trackRef.current
+    if (!el || typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(() => setTrackW(el.clientWidth))
+    ro.observe(el)
+    setTrackW(el.clientWidth)
+    return () => ro.disconnect()
+  }, [])
+
+  const save = () => {
+    try {
+      localStorage.setItem('movement.ruler.ppm', String(ppm))
+    } catch {
+      /* ignore */
+    }
+    setCalibrating(false)
+  }
+
+  const drag = (which) => (e) => {
+    e.preventDefault()
+    const move = (ev) => {
+      const rect = trackRef.current.getBoundingClientRect()
+      const clientX = ev.touches ? ev.touches[0].clientX : ev.clientX
+      const x = Math.max(0, Math.min(rect.width, clientX - rect.left))
+      setCaliper((c) => ({ ...c, [which]: x }))
+    }
+    const up = () => {
+      window.removeEventListener('pointermove', move)
+      window.removeEventListener('pointerup', up)
+    }
+    window.addEventListener('pointermove', move)
+    window.addEventListener('pointerup', up)
+  }
+
+  const gapMm = Math.abs(caliper.b - caliper.a) / ppm
+  const maxMm = Math.floor(trackW / ppm)
+
+  return (
+    <section className="card calc calc--wide ruler-tool">
+      <div className="calc__head">
+        <h2>On-screen ruler</h2>
+        <p className="calc__desc">
+          Measure lug width, a strap, hands or a small part by laying it on the screen. Calibrate once
+          against a bank card or coin so the scale is true to your device.
+        </p>
+      </div>
+
+      {calibrating ? (
+        <div className="ruler-calib">
+          <div className="ruler-calib__controls">
+            <label className="calc-field">
+              <span className="calc-field__label">Reference object</span>
+              <select value={refKey} onChange={(e) => setRefKey(e.target.value)}>
+                {Object.entries(RULER_REFS).map(([k, r]) => (
+                  <option key={k} value={k}>
+                    {r.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="calc-field">
+              <span className="calc-field__label">Adjust until it matches exactly</span>
+              <input type="range" min="2.4" max="14" step="0.01" value={ppm} onChange={(e) => setPpm(parseFloat(e.target.value))} />
+            </label>
+            <p className="ruler-calib__hint">
+              Hold your {ref.label.toLowerCase()} against the outline and drag the slider until the
+              outline is exactly the same size.
+            </p>
+            <div className="ruler-calib__actions">
+              <button className="btn btn--ghost" onClick={() => setCalibrating(false)}>
+                Cancel
+              </button>
+              <button className="btn btn--solid" onClick={save}>
+                Save calibration
+              </button>
+            </div>
+          </div>
+          <div className="ruler-calib__stage">
+            {ref.shape === 'rect' ? (
+              <div className="ruler-refbox" style={{ width: ref.w * ppm, height: ref.h * ppm }} />
+            ) : (
+              <div className="ruler-refbox ruler-refbox--circle" style={{ width: ref.w * ppm, height: ref.w * ppm }} />
+            )}
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="ruler-bar">
+            <div className="ruler-readout">
+              <b>{gapMm.toFixed(1)}</b>
+              <small>mm between the markers</small>
+            </div>
+            <button className="btn btn--ghost" onClick={() => setCalibrating(true)}>
+              {calibrated ? 'Re-calibrate' : 'Calibrate'}
+            </button>
+          </div>
+
+          {!calibrated && (
+            <p className="ruler-warn">
+              Not calibrated yet — the scale is an approximation until you calibrate against a card or
+              coin.
+            </p>
+          )}
+
+          <div className="ruler-track" ref={trackRef}>
+            <svg className="ruler-svg" width={trackW} height="54" aria-hidden="true">
+              {Array.from({ length: maxMm + 1 }).map((_, mm) => {
+                const x = mm * ppm
+                const big = mm % 10 === 0
+                const mid = mm % 5 === 0
+                return (
+                  <line
+                    key={mm}
+                    x1={x}
+                    y1={0}
+                    x2={x}
+                    y2={big ? 22 : mid ? 15 : 9}
+                    className={`ruler-tick ${big ? 'big' : ''}`}
+                  />
+                )
+              })}
+              {Array.from({ length: Math.floor(maxMm / 10) + 1 }).map((_, cm) => (
+                <text key={cm} x={cm * 10 * ppm + 3} y={34} className="ruler-cm">
+                  {cm}
+                </text>
+              ))}
+            </svg>
+            <div className="ruler-caliper" style={{ left: caliper.a }} onPointerDown={drag('a')} />
+            <div className="ruler-caliper" style={{ left: caliper.b }} onPointerDown={drag('b')} />
+            <div
+              className="ruler-caliper__span"
+              style={{ left: Math.min(caliper.a, caliper.b), width: Math.abs(caliper.b - caliper.a) }}
+            />
+          </div>
+          <p className="ruler-hint">
+            Lay the part flat on the screen and read the ruler, or drag the two markers to the edges of
+            a part you’ve traced. cm are numbered; each small line is 1 mm.
+          </p>
+        </>
+      )}
+    </section>
+  )
+}
+
 export default function Calculators() {
   return (
     <main className="content">
@@ -352,6 +530,7 @@ export default function Calculators() {
         <StrapLug />
         <AmplitudeBeat />
         <BatteryLookup />
+        <ScreenRuler />
       </div>
     </main>
   )

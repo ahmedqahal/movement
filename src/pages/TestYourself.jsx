@@ -1,7 +1,7 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { TRACKS } from '../data/lessons.js'
 import { useProgress } from '../context/ProgressContext.jsx'
-import { IconCheck, IconClose, IconBulb } from '../components/Icons.jsx'
+import { IconCheck, IconClose, IconBulb, IconClock } from '../components/Icons.jsx'
 
 const QUIZ_COUNT = 10
 
@@ -28,12 +28,17 @@ function buildPools() {
   })).filter((p) => p.questions.length > 0)
 }
 
-function Runner({ questions, onRestart, onBack }) {
+function Runner({ questions, onRestart, onBack, onFinish }) {
   const [answers, setAnswers] = useState({})
   const total = questions.length
   const answered = Object.keys(answers).length
   const score = questions.reduce((n, q, i) => n + (answers[i] === q.answer ? 1 : 0), 0)
   const finished = answered === total
+
+  useEffect(() => {
+    if (finished && onFinish) onFinish(score, total)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [finished])
 
   const choose = (qi, oi) => {
     if (answers[qi] !== undefined) return
@@ -111,8 +116,22 @@ function Runner({ questions, onRestart, onBack }) {
 }
 
 export default function TestYourself() {
-  const { quizResult } = useProgress()
+  const { quizResult, dueLessonIds, scheduleReview } = useProgress()
   const pools = useMemo(buildPools, [])
+
+  // Spaced repetition: lessons whose scheduled review has come due.
+  const dueLessons = useMemo(() => {
+    const due = new Set(dueLessonIds())
+    const out = []
+    for (const t of TRACKS)
+      for (const l of t.lessons) if (l.quiz && due.has(l.id)) out.push(l)
+    return out
+  }, [dueLessonIds])
+  const duePool = {
+    id: 'due',
+    name: 'Due for review',
+    questions: dueLessons.flatMap((l) => l.quiz.map((q) => ({ ...q, lesson: l.title }))),
+  }
   const allPool = useMemo(
     () => ({ id: 'all', name: 'All tracks', questions: pools.flatMap((p) => p.questions) }),
     [pools]
@@ -135,7 +154,15 @@ export default function TestYourself() {
       ? allPool
       : trackId === 'weak'
         ? { id: 'weak', name: 'Weak spots', questions: weak }
-        : pools.find((p) => p.id === trackId)
+        : trackId === 'due'
+          ? duePool
+          : pools.find((p) => p.id === trackId)
+
+  // When a due-review session finishes, reschedule every lesson it covered.
+  const onDueFinish = (score, total) => {
+    const passed = total > 0 && score >= Math.ceil(total * 0.8)
+    dueLessons.forEach((l) => scheduleReview(l.id, passed))
+  }
 
   const questions = useMemo(
     () =>
@@ -160,6 +187,18 @@ export default function TestYourself() {
 
       {!pool ? (
         <div className="test-picker">
+          {dueLessons.length > 0 && (
+            <button className="card test-pick test-pick--due" onClick={() => setTrackId('due')}>
+              <h3>
+                <IconClock size={17} /> Due for review
+              </h3>
+              <p>
+                {dueLessons.length} lesson{dueLessons.length === 1 ? '' : 's'} scheduled by spaced
+                repetition — the best time to revisit them is now
+              </p>
+              <span className="test-pick__go">Review →</span>
+            </button>
+          )}
           {weak.length > 0 && (
             <button className="card test-pick test-pick--weak" onClick={() => setTrackId('weak')}>
               <h3>Review weak spots</h3>
@@ -191,6 +230,7 @@ export default function TestYourself() {
             questions={questions}
             onRestart={() => setRound((r) => r + 1)}
             onBack={() => setTrackId(null)}
+            onFinish={trackId === 'due' ? onDueFinish : undefined}
           />
         </>
       )}

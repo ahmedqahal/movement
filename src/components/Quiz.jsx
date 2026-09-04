@@ -4,7 +4,7 @@ import { IconCheck, IconClose, IconBulb } from './Icons.jsx'
 
 // quiz = [{ q, options: [...], answer: <index>, explain }]
 export default function Quiz({ quiz, lessonId }) {
-  const { recordQuiz, quizResult } = useProgress()
+  const { recordQuiz, quizResult, scheduleReview } = useProgress()
   const [answers, setAnswers] = useState({}) // qIndex -> chosen index
   const total = quiz.length
   const answeredCount = Object.keys(answers).length
@@ -13,8 +13,12 @@ export default function Quiz({ quiz, lessonId }) {
   const best = quizResult(lessonId)
 
   useEffect(() => {
-    if (finished) recordQuiz(lessonId, score, total)
-  }, [finished, score, total, lessonId, recordQuiz])
+    if (finished) {
+      recordQuiz(lessonId, score, total)
+      // Pass = 80%+ correct → schedule the next spaced-repetition review.
+      scheduleReview(lessonId, score >= Math.ceil(total * 0.8))
+    }
+  }, [finished, score, total, lessonId, recordQuiz, scheduleReview])
 
   const choose = (qi, oi) => {
     if (answers[qi] !== undefined) return // lock once answered

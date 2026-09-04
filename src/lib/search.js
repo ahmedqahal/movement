@@ -35,6 +35,7 @@ const CALCULATORS = [
   { title: 'Strap & lug sizing', summary: 'Lug width → strap, taper and spring-bar sizes.', kw: 'strap lug width spring bar taper buckle mm sizing' },
   { title: 'Amplitude & beat error', summary: 'Read a timegrapher trace — verdict + lift-angle note.', kw: 'amplitude beat error timegrapher lift angle degrees ms regulate escapement' },
   { title: 'Battery cross-reference', summary: 'Look up a watch cell by code or size.', kw: 'battery cell sr lr cr silver oxide lithium 377 sr626 lr44 equivalent' },
+  { title: 'On-screen ruler', summary: 'Calibrate to a card, then measure lug width and parts on the screen.', kw: 'ruler measure lug width strap mm caliper calibrate card coin size on-screen millimetre' },
 ]
 
 function buildIndex() {
