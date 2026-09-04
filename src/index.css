@@ -3141,3 +3141,45 @@ button {
   .print-report__entry p, .print-report__entry ul { margin: 2px 0; font-size: 10pt; }
   .print-report__total { font-weight: 700; margin-top: 14px; }
 }
+
+/* ============================================================
+   Spaced repetition — home nudge + due pick
+   ============================================================ */
+.review-nudge { display: flex; align-items: center; gap: 14px; padding: 16px 20px; margin-bottom: 18px; text-decoration: none; color: inherit; box-shadow: inset 3px 0 0 var(--brass); transition: border-color 0.15s; }
+.review-nudge:hover { border-color: var(--brass-line); }
+.review-nudge__icon { flex: 0 0 auto; color: var(--brass); display: flex; }
+.review-nudge__text { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.review-nudge__text b { font-weight: 600; }
+.review-nudge__text span { font-size: 0.86rem; color: var(--text-dim); }
+.review-nudge__go { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px; color: var(--brass); font-weight: 600; font-size: 0.9rem; }
+.test-pick--due { box-shadow: inset 3px 0 0 var(--brass); }
+.test-pick--due h3 { display: inline-flex; align-items: center; gap: 7px; }
+
+/* ============================================================
+   On-screen ruler
+   ============================================================ */
+.ruler-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.ruler-readout { display: flex; flex-direction: column; }
+.ruler-readout b { font-family: var(--font-display); font-size: 1.9rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.ruler-readout small { font-size: 0.78rem; color: var(--text-faint); }
+.ruler-warn { margin: 0 0 10px; font-size: 0.82rem; color: var(--brass); }
+.ruler-track { position: relative; width: 100%; height: 54px; background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--radius-sm); overflow: hidden; touch-action: none; }
+.ruler-svg { display: block; }
+.ruler-tick { stroke: var(--text-faint); stroke-width: 1; }
+.ruler-tick.big { stroke: var(--text-dim); stroke-width: 1.4; }
+.ruler-cm { fill: var(--text-dim); font-size: 10px; font-family: var(--font-mono); }
+.ruler-caliper { position: absolute; top: 0; width: 14px; height: 54px; margin-left: -7px; cursor: ew-resize; touch-action: none; }
+.ruler-caliper::before { content: ''; position: absolute; left: 6px; top: 0; width: 2px; height: 54px; background: var(--brass); }
+.ruler-caliper::after { content: ''; position: absolute; left: 1px; top: 20px; width: 12px; height: 12px; border-radius: 50%; background: var(--brass); box-shadow: var(--shadow-soft); }
+.ruler-caliper__span { position: absolute; top: 46px; height: 3px; background: var(--brass-line); pointer-events: none; }
+.ruler-hint { margin: 10px 0 0; font-size: 0.82rem; color: var(--text-faint); }
+.ruler-calib { display: grid; grid-template-columns: 260px 1fr; gap: 18px; align-items: start; }
+.ruler-calib__controls { display: flex; flex-direction: column; gap: 12px; }
+.ruler-calib__controls select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 10px; font: inherit; }
+.ruler-calib__controls input[type='range'] { width: 100%; accent-color: var(--brass); }
+.ruler-calib__hint { font-size: 0.84rem; color: var(--text-dim); margin: 0; }
+.ruler-calib__actions { display: flex; gap: 8px; }
+.ruler-calib__stage { display: flex; align-items: center; justify-content: center; min-height: 180px; background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--radius-sm); padding: 16px; overflow: auto; }
+.ruler-refbox { border: 2px dashed var(--brass); border-radius: 6px; flex: 0 0 auto; background: var(--brass-soft); }
+.ruler-refbox--circle { border-radius: 50%; }
+@media (max-width: 640px) { .ruler-calib { grid-template-columns: 1fr; } }

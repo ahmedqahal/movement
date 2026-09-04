@@ -72,11 +72,29 @@ function HeroWatch() {
 }
 
 export default function Home() {
-  const { isDone, completedCount } = useProgress()
+  const { isDone, completedCount, reviewStats } = useProgress()
   const lessons = allLessons()
+  const rs = reviewStats()
 
   return (
     <main className="content">
+      {rs.due > 0 && (
+        <Link to="/test" className="card review-nudge">
+          <div className="review-nudge__icon">
+            <IconClock size={22} />
+          </div>
+          <div className="review-nudge__text">
+            <b>
+              {rs.due} lesson{rs.due === 1 ? '' : 's'} due for review
+            </b>
+            <span>Spaced repetition schedules these when you’re about to forget them. A few minutes keeps them sharp.</span>
+          </div>
+          <span className="review-nudge__go">
+            Review <IconArrow size={16} />
+          </span>
+        </Link>
+      )}
+
       <section className="card hero">
         <div>
           <div className="page-head__eyebrow">Learn to build &amp; repair watches</div>
