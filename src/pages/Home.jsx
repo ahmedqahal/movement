@@ -13,6 +13,7 @@ import {
   IconLevel,
   IconTools,
   IconAlert,
+  IconCompass,
 } from '../components/Icons.jsx'
 
 const TRACK_ICON = {
@@ -104,11 +105,11 @@ export default function Home() {
             strap to servicing a mechanical movement — and building a watch of your own.
           </p>
           <div className="hero__cta">
-            <Link to="/learn/basics-strap" className="btn btn--solid">
-              Start with the basics <IconArrow size={17} />
+            <Link to="/guide" className="btn btn--solid">
+              <IconCompass size={17} /> Guide me
             </Link>
-            <Link to="/anatomy" className="btn btn--ghost">
-              Explore a movement
+            <Link to="/learn/basics-strap" className="btn btn--ghost">
+              Start with the basics
             </Link>
           </div>
         </div>

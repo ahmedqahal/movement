@@ -167,6 +167,13 @@ function buildIndex() {
 
   // Bench tools / hubs with their own pages
   out.push({
+    type: 'Guide',
+    title: 'Guide me',
+    subtitle: 'Pick a goal and get an ordered path through the lessons.',
+    path: '/guide',
+    kw: 'guide me path pathfinder learn plan roadmap where to start goal service build maintain understand restoration next lesson',
+  })
+  out.push({
     type: 'Tool',
     title: 'Timegrapher',
     subtitle: 'Time a watch by ear — rate and beat error from the mic.',

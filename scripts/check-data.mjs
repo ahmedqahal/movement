@@ -20,6 +20,7 @@ const { FLOWCHARTS } = await import('../src/data/flowcharts.js')
 const { ILLUSTRATIONS } = await import('../src/data/illustrations.js')
 const { MOVEMENTS } = await import('../src/data/movements.js')
 const { REFERENCE } = await import('../src/data/reference.js')
+const { PATHS, MOVEMENT_FLAGSHIP } = await import('../src/data/paths.js')
 
 const lessons = TRACKS.flatMap((t) => t.lessons)
 const lessonIds = new Set(lessons.map((l) => l.id))
@@ -105,6 +106,21 @@ for (const a of REFERENCE) {
   if (refSeen.has(a.id)) fail(`duplicate reference id: ${a.id}`)
   refSeen.add(a.id)
   if (!a.sections?.length) fail(`reference "${a.id}": no sections`)
+}
+
+// 9 — every "Guide me" path step (and calibre flagship) is a real lesson
+for (const [goal, p] of Object.entries(PATHS)) {
+  for (const s of p.steps || []) {
+    if (!lessonIds.has(s.id)) fail(`path "${goal}": unknown lesson id "${s.id}"`)
+  }
+  if (p.flagship && !lessonIds.has(p.flagship)) fail(`path "${goal}": unknown flagship "${p.flagship}"`)
+  const maxStart = (p.steps || []).length
+  for (const [lvl, idx] of Object.entries(p.starts || {})) {
+    if (idx < 0 || idx >= maxStart) fail(`path "${goal}": start index for "${lvl}" out of range`)
+  }
+}
+for (const [chip, id] of Object.entries(MOVEMENT_FLAGSHIP)) {
+  if (!lessonIds.has(id)) fail(`movement flagship "${chip}" → unknown lesson "${id}"`)
 }
 
 const counts = {

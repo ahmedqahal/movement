@@ -3183,3 +3183,79 @@ button {
 .ruler-refbox { border: 2px dashed var(--brass); border-radius: 6px; flex: 0 0 auto; background: var(--brass-soft); }
 .ruler-refbox--circle { border-radius: 50%; }
 @media (max-width: 640px) { .ruler-calib { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Guide me — pathfinder
+   ============================================================ */
+.back-link { background: none; border: none; color: var(--text-faint); font: inherit; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px; padding: 0; margin-bottom: 14px; font-size: 0.88rem; }
+.back-link:hover { color: var(--brass); }
+
+.guide-goals { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.guide-goal { text-align: left; padding: 17px 18px; cursor: pointer; font: inherit; color: inherit;
+  display: flex; flex-direction: column; gap: 7px; transition: border-color 0.15s, transform 0.12s, box-shadow 0.15s; }
+.guide-goal:hover { border-color: var(--brass-line); box-shadow: var(--shadow-soft); transform: translateY(-2px); }
+.guide-goal__ico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+  background: var(--brass-soft); color: var(--brass); border: 1px solid var(--brass-line); }
+.guide-goal.steel .guide-goal__ico { background: var(--steel-soft); color: var(--steel); border-color: transparent; }
+.guide-goal.emerald .guide-goal__ico { background: var(--emerald-soft); color: var(--emerald); border-color: transparent; }
+.guide-goal.ruby .guide-goal__ico { background: rgba(194,88,99,.14); color: var(--ruby); border-color: transparent; }
+.guide-goal h3 { font-family: var(--font-display); font-size: 1.12rem; margin: 3px 0 0; font-weight: 600; }
+.guide-goal p { margin: 0; color: var(--text-dim); font-size: 0.88rem; }
+.guide-goal__go { margin-top: auto; padding-top: 4px; color: var(--brass); font-weight: 600; font-size: 0.82rem;
+  display: inline-flex; align-items: center; gap: 5px; }
+
+.guide-opts { display: grid; gap: 10px; max-width: 520px; }
+.guide-opt { text-align: left; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px 16px; cursor: pointer; font: inherit; color: inherit; display: flex; align-items: center; gap: 12px;
+  transition: border-color 0.15s, background 0.15s; }
+.guide-opt:hover { border-color: var(--brass-line); background: var(--surface-2); }
+.guide-opt b { font-weight: 500; }
+.guide-opt__note { margin-left: auto; color: var(--text-faint); font-size: 0.8rem; }
+.guide-opt > svg { color: var(--brass); flex: none; }
+.guide-qlabel { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin: 24px 0 9px; }
+.guide-qlabel__opt { text-transform: none; letter-spacing: 0; color: var(--text-faint); }
+.guide-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.guide-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; color: var(--text-faint); font-size: 0.84rem; margin: 0 0 6px; }
+.guide-meta b { color: var(--text-dim); font-weight: 600; }
+.guide-prog { margin: 16px 0 20px; }
+.guide-prog__bar { height: 7px; border-radius: 6px; background: var(--surface-2); overflow: hidden; }
+.guide-prog__bar > i { display: block; height: 100%; background: var(--brass); border-radius: 6px; }
+.guide-prog__label { font-size: 0.8rem; color: var(--text-faint); margin-top: 7px; }
+
+.guide-review { display: flex; align-items: center; gap: 11px; padding: 12px 15px; margin-bottom: 18px;
+  box-shadow: inset 3px 0 0 var(--brass); text-decoration: none; color: inherit; }
+.guide-review:hover { border-color: var(--brass-line); }
+.guide-review > svg { color: var(--brass); flex: none; }
+.guide-review span { font-size: 0.88rem; } .guide-review b { font-weight: 600; }
+.guide-review__go { margin-left: auto; color: var(--brass); font-weight: 600; font-size: 0.84rem; white-space: nowrap; }
+
+.guide-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.guide-step { background: var(--surface); border: 1px solid var(--border); border-radius: 13px; transition: border-color 0.15s; }
+.guide-step.next { border-color: var(--brass-line); box-shadow: var(--shadow-soft); }
+.guide-step.done { opacity: 0.82; }
+.guide-step__link { display: grid; grid-template-columns: 34px 1fr auto; gap: 14px; align-items: start;
+  padding: 14px 16px; text-decoration: none; color: inherit; }
+.guide-step:hover { border-color: var(--brass-line); }
+.guide-step__n { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-faint); background: var(--surface-2); border: 1px solid var(--border-soft); }
+.guide-step.done .guide-step__n { color: var(--emerald); background: var(--emerald-soft); border-color: transparent; }
+.guide-step.next .guide-step__n { color: #14110f; background: var(--brass); border-color: transparent; }
+.guide-step__body { display: flex; flex-direction: column; gap: 3px; }
+.guide-step__title { font-family: var(--font-display); font-size: 1.02rem; font-weight: 600; }
+.guide-step__why { color: var(--text-dim); font-size: 0.87rem; }
+.guide-step__side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 3px; }
+.guide-step__mins { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); white-space: nowrap; }
+.guide-foot { margin-top: 22px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.guide-foot small { color: var(--text-faint); font-size: 0.82rem; }
+
+.guide-diag { display: flex; gap: 16px; align-items: flex-start; padding: 22px 24px; box-shadow: inset 3px 0 0 var(--steel); }
+.guide-diag > svg { color: var(--steel); flex: none; }
+.guide-diag h3 { font-family: var(--font-display); margin: 0 0 6px; font-size: 1.15rem; }
+.guide-diag p { margin: 0 0 14px; color: var(--text-dim); }
+
+@media (max-width: 560px) { .guide-goals { grid-template-columns: 1fr; } }
+.guide-opt.sel { border-color: var(--brass-line); background: var(--brass-soft); }
+.guide-opt.sel > svg { color: var(--brass); }
+.guide-cta { margin-top: 22px; }
