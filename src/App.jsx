@@ -21,6 +21,7 @@ import {
   IconCamera,
   IconPulse,
   IconCart,
+  IconCompass,
 } from './components/Icons.jsx'
 import SearchModal from './components/SearchModal.jsx'
 import Home from './pages/Home.jsx'
@@ -40,6 +41,7 @@ import Movements from './pages/Movements.jsx'
 import Illustrated from './pages/Illustrated.jsx'
 import Timegrapher from './pages/Timegrapher.jsx'
 import Sourcing from './pages/Sourcing.jsx'
+import GuideMe from './pages/GuideMe.jsx'
 import PracticeLog from './pages/PracticeLog.jsx'
 
 const NAV = [
@@ -47,6 +49,7 @@ const NAV = [
     section: 'Explore',
     items: [
       { to: '/', label: 'Home', icon: IconHome, end: true },
+      { to: '/guide', label: 'Guide me', icon: IconCompass },
       { to: '/anatomy', label: 'Anatomy Explorer', icon: IconAnatomy },
       { to: '/assembly', label: 'Assembly', icon: IconLayers },
       { to: '/plates', label: 'Technical Plates', icon: IconPlate },
@@ -218,6 +221,7 @@ export default function App() {
         <MobileNav onOpenSearch={openSearch} theme={theme} onToggleTheme={toggleTheme} />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/guide" element={<GuideMe />} />
           <Route path="/anatomy" element={<Anatomy />} />
           <Route path="/assembly" element={<Assembly />} />
           <Route path="/plates" element={<Plates />} />

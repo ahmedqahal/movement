@@ -237,3 +237,10 @@ export const IconCart = (p) => (
     <path d="M2 3h2.3l2.3 12.2a1.6 1.6 0 0 0 1.6 1.3h8.2a1.6 1.6 0 0 0 1.6-1.3L21 7H6" />
   </S>
 )
+
+export const IconCompass = (p) => (
+  <S {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="m15.6 8.4-2.1 5.1-5.1 2.1 2.1-5.1z" />
+  </S>
+)
