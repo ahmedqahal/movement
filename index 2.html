@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#efe7d8" />
-    <link rel="icon" type="image/svg+xml" href="/movement/favicon.svg" />
-    <link rel="apple-touch-icon" href="/movement/apple-touch-icon.png" />
+    <meta name="theme-color" content="#14110f" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Movement" />
@@ -34,20 +34,20 @@
     <meta name="twitter:image" content="social-card.jpg" />
     <title>Movement · Learn Watch Building & Repair</title>
     <script>
-      // Apply the saved theme before paint to avoid a flash. Movement's
-      // "Daylight" identity is light-first, so light is the default; a saved
-      // choice (either way) always wins.
+      // Apply the saved (or system) theme before paint to avoid a flash.
       (function () {
         try {
           var t = localStorage.getItem('movement.theme')
-          if (t !== 'light' && t !== 'dark') t = 'light'
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+          }
           document.documentElement.setAttribute('data-theme', t)
         } catch (e) {}
       })()
     </script>
-    <script type="module" crossorigin src="/movement/assets/index-BWYzlfl6.js"></script>
-    <link rel="stylesheet" crossorigin href="/movement/assets/index-BG_f4u4Y.css">
-  <link rel="manifest" href="/movement/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/movement/registerSW.js"></script></head>
+    <script type="module" crossorigin src="/assets/index-BDnA476v.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-C7mYuAvg.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
   <body>
     <div id="root"></div>
   </body>
