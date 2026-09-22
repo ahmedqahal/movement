@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#14110f" />
+    <meta name="theme-color" content="#efe7d8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,13 +34,13 @@
     <meta name="twitter:image" content="social-card.jpg" />
     <title>Movement · Learn Watch Building & Repair</title>
     <script>
-      // Apply the saved (or system) theme before paint to avoid a flash.
+      // Apply the saved theme before paint to avoid a flash. Movement's
+      // "Daylight" identity is light-first, so light is the default; a saved
+      // choice (either way) always wins.
       (function () {
         try {
           var t = localStorage.getItem('movement.theme')
-          if (t !== 'light' && t !== 'dark') {
-            t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
-          }
+          if (t !== 'light' && t !== 'dark') t = 'light'
           document.documentElement.setAttribute('data-theme', t)
         } catch (e) {}
       })()

@@ -18,8 +18,8 @@ export default defineConfig({
         short_name: 'Movement',
         description:
           'Learn to build and repair watches with interactive diagrams, step-by-step lessons, and a practice log.',
-        theme_color: '#14110f',
-        background_color: '#14110f',
+        theme_color: '#efe7d8',
+        background_color: '#efe7d8',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '.',

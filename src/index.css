@@ -1,42 +1,53 @@
 /* ============================================================
-   Movement — design system
-   A warm, horological dark theme: ink & brass, with cool
-   steel accents for electronic (quartz) topics and ruby for
-   jewels & cautions.
+   Movement — design system · "Daylight"
+   A warm, sunlit workbench: oat paper, brass & walnut, with a
+   soft Fraunces serif. Light is the primary identity; dark is a
+   warm-dusk counterpart. Steel accents mark electronic (quartz)
+   topics, ruby marks jewels & cautions.
    ============================================================ */
 
+/* Self-hosted so the app's display face works fully offline
+   (Vite fingerprints this and it lands in the PWA precache). */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 650;
+  font-display: swap;
+  src: url('./assets/fonts/fraunces-var.woff2') format('woff2');
+}
+
 :root {
-  /* Surfaces */
-  --bg: #14110f;
-  --bg-elev: #1b1714;
-  --surface: #221d18;
-  --surface-2: #2a241e;
-  --border: #382f27;
-  --border-soft: #2c251f;
+  /* Surfaces — warm dusk (dark counterpart) */
+  --bg: #1a1610;
+  --bg-elev: #221c14;
+  --surface: #251f16;
+  --surface-2: #2f2718;
+  --border: #3d3422;
+  --border-soft: #2f2817;
 
   /* Text */
-  --text: #efe8dc;
-  --text-dim: #b3a898;
-  --text-faint: #7d7264;
+  --text: #efe7d4;
+  --text-dim: #b6aa90;
+  --text-faint: #8f8464;
 
   /* Accents */
-  --brass: #d0a84f;
-  --brass-bright: #e8c675;
-  --brass-soft: rgba(208, 168, 79, 0.14);
-  --brass-line: rgba(208, 168, 79, 0.4);
+  --brass: #dcac4e;
+  --brass-bright: #f0cd7a;
+  --brass-soft: rgba(220, 172, 78, 0.13);
+  --brass-line: rgba(220, 172, 78, 0.36);
 
-  --steel: #86a7bd;
-  --steel-soft: rgba(134, 167, 189, 0.14);
+  --steel: #8fb0c2;
+  --steel-soft: rgba(143, 176, 194, 0.14);
 
-  --ruby: #c25863;
-  --ruby-soft: rgba(194, 88, 99, 0.14);
+  --ruby: #cd6b64;
+  --ruby-soft: rgba(205, 107, 100, 0.14);
 
-  --emerald: #7ba583;
-  --emerald-soft: rgba(123, 165, 131, 0.14);
+  --emerald: #8aa876;
+  --emerald-soft: rgba(138, 168, 118, 0.14);
 
   /* Type */
-  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino,
-    'Book Antiqua', Georgia, 'Times New Roman', serif;
+  --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino,
+    Georgia, 'Times New Roman', serif;
   --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
   --font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', ui-monospace,
@@ -46,42 +57,42 @@
   --radius: 14px;
   --radius-sm: 9px;
   --radius-lg: 20px;
-  --shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.8);
-  --shadow-soft: 0 8px 24px -14px rgba(0, 0, 0, 0.7);
+  --shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.72);
+  --shadow-soft: 0 8px 24px -14px rgba(0, 0, 0, 0.6);
   --sidebar-w: 254px;
   --maxw: 1120px;
 }
 
-/* Light theme — opt-in via the toggle (dark remains the default identity).
+/* Light theme — the primary "Daylight" identity (a sunlit bench).
    Diagram panels stay dark in both themes (they use their own dark fills). */
 :root[data-theme='light'] {
-  --bg: #f1ede3;
-  --bg-elev: #fbf8f1;
-  --surface: #fbf9f3;
-  --surface-2: #efe8da;
-  --border: #dcd2bf;
-  --border-soft: #e7dfce;
+  --bg: #efe7d8;
+  --bg-elev: #f7f2e7;
+  --surface: #faf6ee;
+  --surface-2: #f1e9d7;
+  --border: #e2d7bf;
+  --border-soft: #ece2cd;
 
-  --text: #282218;
-  --text-dim: #5e5545;
-  --text-faint: #918770;
+  --text: #2c2519;
+  --text-dim: #6d6350;
+  --text-faint: #9a8e76;
 
-  --brass: #8c6a1b;
-  --brass-bright: #6d5312;
-  --brass-soft: rgba(150, 114, 30, 0.15);
-  --brass-line: rgba(150, 114, 30, 0.45);
+  --brass: #9c6f24;
+  --brass-bright: #7c5613;
+  --brass-soft: rgba(156, 111, 36, 0.12);
+  --brass-line: rgba(156, 111, 36, 0.42);
 
-  --steel: #3b5e75;
-  --steel-soft: rgba(59, 94, 117, 0.13);
+  --steel: #3f607a;
+  --steel-soft: rgba(63, 96, 122, 0.12);
 
-  --ruby: #ac2e3b;
-  --ruby-soft: rgba(172, 46, 59, 0.12);
+  --ruby: #a6373f;
+  --ruby-soft: rgba(166, 55, 63, 0.12);
 
-  --emerald: #3b7448;
-  --emerald-soft: rgba(59, 116, 72, 0.13);
+  --emerald: #4c7440;
+  --emerald-soft: rgba(76, 116, 64, 0.14);
 
-  --shadow: 0 18px 40px -22px rgba(60, 50, 30, 0.35);
-  --shadow-soft: 0 8px 24px -16px rgba(60, 50, 30, 0.26);
+  --shadow: 0 18px 40px -22px rgba(70, 54, 28, 0.30);
+  --shadow-soft: 0 8px 22px -16px rgba(70, 54, 28, 0.22);
 }
 
 * {
