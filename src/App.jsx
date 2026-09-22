@@ -187,11 +187,12 @@ function ScrollToTop() {
 export default function App() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [theme, setTheme] = useState(() => {
+    // Daylight is light-first: honour a saved choice, otherwise default to
+    // light so we match the pre-paint default in index.html. (We don't follow
+    // prefers-color-scheme here — that would flip us to dark on the first
+    // visit and write it back, quietly overriding the light-first identity.)
     const saved = localStorage.getItem('movement.theme')
-    if (saved === 'light' || saved === 'dark') return saved
-    return typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
-      ? 'light'
-      : 'dark'
+    return saved === 'dark' ? 'dark' : 'light'
   })
 
   useEffect(() => {
