@@ -40,3 +40,6 @@ ios/App/App/config [0-9].xml
 
 # Signing/export config — build tooling, not app source
 appstore/ExportOptions.plist
+
+# iOS archive/export artifacts
+build/
