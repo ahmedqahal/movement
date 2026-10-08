@@ -66,10 +66,13 @@ export const GUIDE_GOALS = [
 // flagship lesson.
 export const MOVEMENT_FLAGSHIP = {
   'Seiko NH35': 'svc-nh35',
+  'Seiko 4R/6R': 'svc-seiko',
   'ETA 2824': 'svc-2824',
   'Unitas 6497': 'svc-6497',
+  'Valjoux 7750': 'svc-7750',
+  'Miyota 8215/9015': 'svc-miyota',
 }
-export const MOVEMENT_CHIPS = ['Seiko NH35', 'ETA 2824', 'Unitas 6497', 'Not sure yet']
+export const MOVEMENT_CHIPS = ['Seiko NH35', 'Seiko 4R/6R', 'ETA 2824', 'Unitas 6497', 'Valjoux 7750', 'Miyota 8215/9015', 'Not sure yet']
 
 // Each path: ordered { id, why } steps, and `starts` giving the first step
 // index per experience level. `flagship` marks the step the calibre chip
@@ -85,6 +88,8 @@ export const PATHS = {
       { id: 'basics-settime', why: 'Set the time and date without stressing the movement.' },
       { id: 'basics-care', why: 'Keep it clean and running between services.' },
       { id: 'basics-glass', why: 'Swap a scratched crystal — a confident step up.' },
+      { id: 'basics-water-care', why: 'Keep the case sealed — the habits that keep water out.' },
+      { id: 'diag-magnetism', why: 'The commonest “suddenly runs fast” — spot it and cure it in seconds.' },
     ],
   },
   understand: {
@@ -116,19 +121,22 @@ export const PATHS = {
       { id: 'svc-oil', why: 'The oiling chart — which oil on which jewel.' },
       { id: 'svc-reassemble', why: 'Rebuild it, lubricated correctly.' },
       { id: 'svc-test', why: 'Final test and regulation on the timegrapher.' },
+      { id: 'diag-lowamp', why: 'Know how to chase low amplitude if it comes back after a service.' },
       { id: 'svc-6497', why: 'Put it all together on a real calibre, start to finish.' },
     ],
   },
   build: {
-    starts: { new: 0, basic: 0, opened: 2, serviced: 2 },
+    starts: { new: 0, basic: 0, opened: 3, serviced: 3 },
     flagship: null,
     steps: [
       { id: 'build-plan', why: 'Pick a movement, dial, hands and case that fit together.' },
+      { id: 'build-movement-fit', why: 'Check the movement actually fits the case before you buy.' },
       { id: 'build-first-kit', why: 'Start with a kit designed to go together.' },
       { id: 'fund-overview', why: 'Know the parts you’re assembling.' },
       { id: 'build-dial-hands', why: 'Fit the dial and hands at the right heights.' },
       { id: 'build-case', why: 'Case the movement and fit the stem squarely.' },
       { id: 'build-seal', why: 'Seal it and pressure-test before it gets wet.' },
+      { id: 'build-lume', why: 'Relume the dial and hands for an even glow (optional).' },
       { id: 'build-troubleshoot', why: 'Fix the snags every first build hits.' },
     ],
   },
@@ -137,10 +145,13 @@ export const PATHS = {
     steps: [
       { id: 'rest-staff', why: 'Replace a broken balance staff on the staking set.' },
       { id: 'rest-poise', why: 'Poise the balance for accuracy in every position.' },
+      { id: 'rest-positions', why: 'Adjust to positions — the full six-position timing method.' },
       { id: 'rest-hairspring', why: 'The most delicate skill on the bench.' },
       { id: 'rest-jewel', why: 'Replace jewels and set end-shake precisely.' },
+      { id: 'rest-endshake', why: 'Dial in the end- and side-shake so it runs in every position.' },
       { id: 'rest-pivots', why: 'Save a worn pivot with the Jacot tool.' },
       { id: 'rest-shellac', why: 'Adjust the escapement and re-shellac the pallets.' },
+      { id: 'mech-keyless-repair', why: 'Repair worn keyless works — won’t wind or stay in setting.' },
       { id: 'rest-case', why: 'Refinish honestly — and know what not to touch.' },
     ],
   },
