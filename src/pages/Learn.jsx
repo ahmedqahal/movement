@@ -35,9 +35,9 @@ export default function Learn() {
         <div className="page-head__eyebrow">Learn</div>
         <h1>Lessons &amp; tracks</h1>
         <p>
-          Nine tracks, from watch theory and everyday care to full servicing, chronographs, and
-          building from parts. Work top to bottom, or jump to whatever you need. Tick lessons off as
-          you go.
+          A dozen tracks, from watch theory and everyday care to full servicing, chronographs,
+          building from parts — and making your own leather strap. Work top to bottom, or jump to
+          whatever you need. Tick lessons off as you go.
         </p>
       </div>
 

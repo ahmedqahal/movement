@@ -53,6 +53,13 @@ export const GUIDE_GOALS = [
     blurb: 'Balance staffs, poising, jewelling, the lathe — the deep end.',
   },
   {
+    id: 'strapmaking',
+    icon: 'strap',
+    accent: 'ruby',
+    title: 'Make a leather strap',
+    blurb: 'Cut, skive, saddle-stitch and finish a leather strap fitted to your watch and wrist.',
+  },
+  {
     id: 'fix',
     icon: 'alert',
     accent: 'ruby',
@@ -153,6 +160,20 @@ export const PATHS = {
       { id: 'rest-shellac', why: 'Adjust the escapement and re-shellac the pallets.' },
       { id: 'mech-keyless-repair', why: 'Repair worn keyless works — won’t wind or stay in setting.' },
       { id: 'rest-case', why: 'Refinish honestly — and know what not to touch.' },
+    ],
+  },
+  strapmaking: {
+    starts: { new: 0, basic: 0, opened: 0, serviced: 0 },
+    steps: [
+      { id: 'sm-overview', why: 'Pick your leather — it decides everything downstream.' },
+      { id: 'sm-tools', why: 'The small kit you need, and what each tool does.' },
+      { id: 'sm-design', why: 'Lug width, length and taper — get them right on paper.' },
+      { id: 'sm-cut', why: 'Cut the strap, lining and keepers cleanly.' },
+      { id: 'sm-skive', why: 'Thin the fold areas and bond the lining.' },
+      { id: 'sm-hardware', why: 'Fit the buckle, form the keepers, punch the holes.' },
+      { id: 'sm-stitch', why: 'The two-needle saddle stitch — the heart of it.' },
+      { id: 'sm-edges', why: 'Bevel, smooth and seal the edge.' },
+      { id: 'sm-fit', why: 'Fit it to watch and wrist, and make it last.' },
     ],
   },
 }
