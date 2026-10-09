@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { allLessons } from '../data/lessons.js'
+import { allLessons, TRACKS } from '../data/lessons.js'
 import { DIAGRAMS } from '../data/anatomy.js'
 import { ILLUSTRATIONS } from '../data/illustrations.js'
 import { MOVEMENTS } from '../data/movements.js'
@@ -35,7 +35,7 @@ const LESSONS = allLessons().length
 // data so a block never advertises a number the app can't back up.
 const PRIMARY = [
   { to: '/guide', Icon: IconCompass, title: 'Guide me', sub: 'Find your path' },
-  { to: '/learn', Icon: IconLearn, title: 'Learn', sub: `${LESSONS} lessons · 11 tracks` },
+  { to: '/learn', Icon: IconLearn, title: 'Learn', sub: `${LESSONS} lessons · ${TRACKS.length} tracks` },
   { to: '/anatomy', Icon: IconAnatomy, title: 'Anatomy Explorer', sub: `${DIAGRAMS.length} interactive diagrams` },
   { to: '/assembly', Icon: IconBuild, title: 'Assembly', sub: 'Take it apart, build it back' },
   { to: '/movements', Icon: IconGear, title: 'Movement Guides', sub: `${MOVEMENTS.length} calibres, mapped` },

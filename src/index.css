@@ -764,6 +764,98 @@ button {
   width: 100%;
   height: auto;
 }
+.lesson-part {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 14px 0 2px;
+}
+.lesson-part:first-child {
+  margin-top: 0;
+}
+.fig-zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: zoom-in;
+}
+.fig-zoom svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fig-zoom__hint {
+  display: none;
+}
+.fig-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(12, 10, 8, 0.95);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 56px) 12px calc(env(safe-area-inset-bottom, 0px) + 24px);
+  cursor: zoom-out;
+}
+.fig-lightbox__art {
+  flex: none;
+  width: max(100%, 760px);
+  max-width: 1280px;
+  margin: 0 auto;
+  background: radial-gradient(circle at 50% 40%, #1f1a15, #141110 80%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px;
+  cursor: default;
+}
+.fig-lightbox__art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fig-lightbox__close {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 10px);
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(30, 26, 22, 0.9);
+  color: #efe8dc;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+@media (max-width: 640px) {
+  .step__figure {
+    margin-left: -56px;
+    padding: 8px;
+  }
+  .fig-zoom__hint {
+    display: block;
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: #8a8072;
+    margin-top: 4px;
+  }
+}
+.fig-loading {
+  aspect-ratio: 480 / 260;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+}
 .step__figcaption {
   text-align: center;
   font-size: 0.8rem;

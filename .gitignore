@@ -43,3 +43,5 @@ appstore/ExportOptions.plist
 
 # iOS archive/export artifacts
 build/
+research_notes/
+reports/

@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { TRACKS } from '../data/lessons.js'
 import { useProgress } from '../context/ProgressContext.jsx'
@@ -74,8 +75,11 @@ export default function Learn() {
               {t.lessons.map((l, i) => {
                 const done = isDone(l.id)
                 const qr = l.quiz && quizResult(l.id)
+                const newPart = l.part && l.part !== t.lessons[i - 1]?.part
                 return (
-                  <Link key={l.id} to={`/learn/${l.id}`} className="card lesson-row">
+                  <Fragment key={l.id}>
+                  {newPart && <div className="lesson-part">{l.part}</div>}
+                  <Link to={`/learn/${l.id}`} className="card lesson-row">
                     <div className="lesson-row__index">{i + 1}</div>
                     <div className="lesson-row__body">
                       <h3>{l.title}</h3>
@@ -93,6 +97,7 @@ export default function Learn() {
                       {done && <IconCheck size={16} />}
                     </div>
                   </Link>
+                  </Fragment>
                 )
               })}
             </div>

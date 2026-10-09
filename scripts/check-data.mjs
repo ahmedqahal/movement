@@ -32,6 +32,14 @@ const figKeys = new Set([
   ...[...stepSrc.matchAll(/^\s{2}(\w+):\s*'\/illustrations/gm)].map((m) => m[1]),
   ...[...stepSrc.matchAll(/^\s{2}(\w+):\s*[A-Z]\w+,/gm)].map((m) => m[1]),
 ])
+// strap diagrams: registry entries in components/strap/figs-*.jsx
+const strapDir = path.join(root, 'src/components/strap')
+const strapIds = new Set(
+  fs
+    .readdirSync(strapDir)
+    .filter((f) => /^figs-.*\.jsx$/.test(f))
+    .flatMap((f) => [...read(`src/components/strap/${f}`).matchAll(/^\s{2}'([a-z0-9-]+)':\s*[A-Z]\w*,?\s*$/gm)].map((m) => m[1]))
+)
 const plateIds = new Set(
   [...read('src/components/plates/index.jsx').matchAll(/id:\s*'([a-z-]+)'/g)].map((m) => m[1])
 )
@@ -52,10 +60,19 @@ for (const l of lessons) {
       if (!illusIds.has(f.slice(6))) fail(`${l.id}: unknown illustration "${f}"`)
     } else if (f.startsWith('plate:')) {
       if (!plateIds.has(f.slice(6))) fail(`${l.id}: unknown plate "${f}"`)
+    } else if (f.startsWith('strap:')) {
+      if (!strapIds.has(f.slice(6))) fail(`${l.id}: unknown strap diagram "${f}"`)
     } else if (!figKeys.has(f)) {
       fail(`${l.id}: unknown figure key "${f}"`)
     }
   }
+}
+
+// 2b — the strap-making track promises a diagram on every step
+for (const l of TRACKS.find((t) => t.id === 'strapmaking')?.lessons || []) {
+  l.steps.forEach((s, i) => {
+    if (!s.figure) fail(`${l.id} step ${i + 1} ("${s.title}"): strap steps must have a diagram`)
+  })
 }
 
 // 3 — quiz answers are in range
@@ -130,6 +147,7 @@ const counts = {
   flowcharts: FLOWCHARTS.length,
   movements: MOVEMENTS.length,
   reference: REFERENCE.length,
+  'strap diagrams': strapIds.size,
 }
 console.log('content:', Object.entries(counts).map(([k, v]) => `${v} ${k}`).join(' · '))
 

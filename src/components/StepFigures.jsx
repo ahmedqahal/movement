@@ -1,9 +1,14 @@
 // Small schematic illustrations shown inside lesson steps.
 // Reference them by key from lessons.js (`figure: 'springbar'`).
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { Gear } from './diagrams/primitives'
 import { PLATES } from './plates/index.jsx'
 import LessonIllustration from './LessonIllustration.jsx'
 import asset from '../lib/asset.js'
+
+// The strap-making diagrams are a large set used by one track only, so they
+// load on demand.
+const StrapFigure = lazy(() => import('./strap/index.jsx'))
 
 const C = {
   brass: '#d0a84f',
@@ -477,7 +482,48 @@ const FIG_IMAGES = {
   partsbench: '/illustrations/fig-parts.webp',
 }
 
+// Strap diagrams are dense technical drawings: tapping one opens it full
+// screen (pannable on a portrait phone, full width in landscape).
+function ZoomableStrap({ id }) {
+  const [open, setOpen] = useState(false)
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prev
+    }
+  }, [open])
+  return (
+    <>
+      <button type="button" className="fig-zoom" onClick={() => setOpen(true)} aria-label="Enlarge diagram">
+        <Suspense fallback={<div className="fig-loading" />}>
+          <StrapFigure id={id} />
+        </Suspense>
+        <span className="fig-zoom__hint">Tap to enlarge</span>
+      </button>
+      {open && (
+        <div className="fig-lightbox" role="dialog" aria-modal="true" aria-label="Diagram" onClick={() => setOpen(false)}>
+          <button type="button" className="fig-lightbox__close" aria-label="Close" onClick={() => setOpen(false)}>
+            ×
+          </button>
+          <div className="fig-lightbox__art" onClick={(e) => e.stopPropagation()}>
+            <Suspense fallback={null}>
+              <StrapFigure id={id} />
+            </Suspense>
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
 export default function StepFigure({ name }) {
+  // `strap:<id>` references a strap-making diagram from components/strap
+  if (name && name.startsWith('strap:')) return <ZoomableStrap id={name.slice(6)} />
   // `plate:<id>` references a technical plate from components/plates
   if (name && name.startsWith('plate:')) {
     const plate = PLATES.find((p) => p.id === name.slice(6))
