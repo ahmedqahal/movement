@@ -1,5 +1,5 @@
-import { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Fragment, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { TRACKS } from '../data/lessons.js'
 import { useProgress } from '../context/ProgressContext.jsx'
 import {
@@ -29,6 +29,16 @@ const TRACK_ICON = {
 
 export default function Learn() {
   const { isDone, quizResult } = useProgress()
+  const [params] = useSearchParams()
+  const jump = params.get('t')
+
+  // `/learn?t=<trackId>` opens the page at that track (used by the home
+  // screen's course card and the track index below).
+  useEffect(() => {
+    if (!jump) return
+    const el = document.getElementById(`track-${jump}`)
+    if (el) el.scrollIntoView({ block: 'start' })
+  }, [jump])
 
   return (
     <main className="content">
@@ -42,6 +52,15 @@ export default function Learn() {
         </p>
       </div>
 
+      <nav className="track-index" aria-label="Tracks">
+        {TRACKS.map((t) => (
+          <Link key={t.id} to={`/learn?t=${t.id}`} replace className={`track-chip ${jump === t.id ? 'on' : ''}`}>
+            {t.name}
+            <small>{t.lessons.length}</small>
+          </Link>
+        ))}
+      </nav>
+
       {TRACKS.map((t) => {
         const Icon = TRACK_ICON[t.icon] || IconGear
         const doneCount = t.lessons.filter((l) => isDone(l.id)).length
@@ -50,7 +69,7 @@ export default function Learn() {
         const gotScore = taken.reduce((s, l) => s + quizResult(l.id).score, 0)
         const gotTotal = taken.reduce((s, l) => s + quizResult(l.id).total, 0)
         return (
-          <section key={t.id} style={{ marginBottom: 44 }}>
+          <section key={t.id} id={`track-${t.id}`} className="track-section" style={{ marginBottom: 44 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 6 }}>
               <div className={`pathcard__icon ${t.accent}`} style={{ marginBottom: 0 }}>
                 <Icon size={22} />

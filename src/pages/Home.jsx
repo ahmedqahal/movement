@@ -26,9 +26,12 @@ import {
   IconCalc,
   IconGlossary,
   IconBook,
+  IconStrap,
 } from '../components/Icons.jsx'
 
 const LESSONS = allLessons().length
+const STRAP = TRACKS.find((t) => t.id === 'strapmaking')
+const STRAP_STEPS = STRAP ? STRAP.lessons.reduce((n, l) => n + l.steps.length, 0) : 0
 
 // The section launcher: a grid of blocks, one per section — a brass icon,
 // a serif title, a one-line "what's inside". Counts come straight from the
@@ -111,6 +114,25 @@ export default function Home() {
         )}
         <div className="launch-rule" />
       </header>
+
+      {STRAP && (
+        <Link to="/learn?t=strapmaking" className="card feature-course">
+          <span className="feature-course__icon">
+            <IconStrap size={26} />
+          </span>
+          <span className="feature-course__text">
+            <span className="feature-course__eyebrow">New course</span>
+            <b>{STRAP.name}</b>
+            <span>
+              {STRAP.lessons.length} lessons · a technical diagram for each of {STRAP_STEPS} steps — from your first
+              strap to atelier grade.
+            </span>
+          </span>
+          <span className="feature-course__go">
+            Open <IconArrow size={16} />
+          </span>
+        </Link>
+      )}
 
       <div className="launch-grid">
         {PRIMARY.map((b) => (

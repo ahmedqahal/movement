@@ -3362,6 +3362,20 @@ button {
 /* ============================================================
    Spaced repetition — home nudge + due pick
    ============================================================ */
+.feature-course { display: flex; align-items: center; gap: 16px; padding: 18px 20px; margin: 0 0 22px; text-decoration: none; color: inherit; box-shadow: inset 3px 0 0 var(--ruby); transition: border-color 0.15s; }
+.feature-course:hover { border-color: var(--brass-line); }
+.feature-course__icon { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; color: var(--brass); background: var(--surface-2); border: 1px solid var(--brass-line); }
+.feature-course__text { flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.feature-course__eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass); }
+.feature-course__text b { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; }
+.feature-course__text span:last-child { font-size: 0.88rem; color: var(--text-dim); }
+.feature-course__go { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px; color: var(--brass); font-weight: 600; font-size: 0.9rem; }
+@media (max-width: 560px) { .feature-course__go { display: none; } }
+.track-index { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 30px; }
+.track-chip { display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text-dim); font-size: 0.85rem; text-decoration: none; transition: border-color 0.15s, color 0.15s; }
+.track-chip small { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint); }
+.track-chip:hover, .track-chip.on { border-color: var(--brass-line); color: var(--text); }
+.track-section { scroll-margin-top: 140px; }
 .review-nudge { display: flex; align-items: center; gap: 14px; padding: 16px 20px; margin-bottom: 18px; text-decoration: none; color: inherit; box-shadow: inset 3px 0 0 var(--brass); transition: border-color 0.15s; }
 .review-nudge:hover { border-color: var(--brass-line); }
 .review-nudge__icon { flex: 0 0 auto; color: var(--brass); display: flex; }
