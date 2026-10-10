@@ -1559,7 +1559,7 @@ function PRolled() {
 /* ================================================================== */
 const OPEN_L = [18, 29.5, 41] // opening centres, long piece (mm from the lug fold)
 const OPEN_S = [19, 30.5, 42] // short piece
-const OD = 7 // drawn diameter — no source gives one (house standard)
+const OD = 5 // drawn diameter of the classic three-opening layout (measured standard: see ra-sizes)
 
 /* 1 · Pattern — two-piece, 120 / 75–80, 2 mm taper */
 function RaPattern() {
@@ -1636,9 +1636,9 @@ function RaLayout() {
       <T x={XS(67)} y={TS.y + 46} a="middle" s={10.5} c={C.ruby}>
         keeper & buckle-fold zone
       </T>
-      <Lead p={[XS(OPEN_S[2]) + 3.5 * s, TS.y]} t={[330, 182]} text="Ø — house standard" sub="no source gives it" c={C.brass} />
+      <Lead p={[XS(OPEN_S[2]) + 3.5 * s, TS.y]} t={[300, 182]} text="Ø: see Size the openings" sub="graded ≈4.5–5 / 2.2–2.5 mm" c={C.brass} />
       <Sep x1={14} y1={268} x2={466} y2={268} />
-      <Note x={14} y={288} lines={['No source gives the opening diameter or spacing: measure a reference rally', 'strap and make that your house standard. Three openings per piece (classic).']} s={10.5} lh={14} />
+      <Note x={14} y={288} lines={['Measured on 20 mm racing straps: large Ø ≈4.5–5 mm, small 2.2–2.5 mm (graded);', 'see Size the openings. Shown here: the classic three per piece.']} s={10.5} lh={14} />
     </Fig>
   )
 }
@@ -1667,7 +1667,7 @@ function RaCentres() {
       ))}
       <Dim a={[marks[0], TP.y + 32]} b={[marks[1], TP.y + 32]} off={12} flip text="p" />
       <Dim a={[marks[1], TP.y + 32]} b={[marks[2], TP.y + 32]} off={12} flip text="p" />
-      <Lead p={[marks[2], TP.y]} t={[300, 56]} text="pricked centres" sub="equal steps, p = house standard" />
+      <Lead p={[marks[2], TP.y]} t={[300, 56]} text="pricked centres" sub="equal steps, p from your pattern" />
       <Lead p={[X(48), TP.y]} t={[300, 104]} text="centreline, scribed first" c={C.steel} />
 
       <Sep x1={14} y1={150} x2={466} y2={150} />
@@ -1773,7 +1773,7 @@ function RaUnderlay() {
         punched only for see-through
       </T>
       <T x={cx} y={y + tt + 92} a="middle" s={10} c={C.faint}>
-        Ø: house standard
+        Ø: see Size the openings
       </T>
 
       <Sep x1={246} y1={28} x2={246} y2={290} />
@@ -1906,7 +1906,7 @@ function RaLaminate() {
       <GlueLine x1={xl + 2} x2={xr - 2} y={yb + 0.8} />
       <Dim a={[cx - (OD / 2) * sk, yb - 30]} b={[cx + (OD / 2) * sk, yb - 30]} />
       <T x={cx} y={yb - 38} a="middle" s={10.5} mono>
-        Ø house std
+        Ø: Size the openings
       </T>
       <Cap p={[cx, yb + 4]} x={cx} y={306} text="the lining shows in the opening" />
       <Cap p={[cx - clr * sk - 6, yb - 6]} x={24} y={194} a="start" text="padding stops short" sub="of the opening zone" />

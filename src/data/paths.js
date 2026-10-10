@@ -183,6 +183,7 @@ export const PATHS = {
       { id: 'sm-classic-1', why: 'Now put it all together: the classic lined strap, part I.' },
       { id: 'sm-classic-2', why: 'Fold, laminate and make the final cut.' },
       { id: 'sm-classic-3', why: 'Stitch, finish and assemble your first strap.' },
+      { id: 'sm-atelier', why: 'Then refine to atelier grade — the finer stitch premium makers sew.' },
       { id: 'sm-qc', why: 'Check it against the ten tolerances.' },
       { id: 'sm-fit', why: 'Fit it, wear it in, and read the faults.' },
     ],

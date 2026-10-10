@@ -11,6 +11,11 @@ import { FIGS as unlinedRemborde } from './figs-unlined-remborde.jsx'
 import { FIGS as paddedRally } from './figs-padded-rally.jsx'
 import { FIGS as bundSpNosew } from './figs-bund-sp-nosew.jsx'
 import { FIGS as qrExoticFit } from './figs-qr-exotic-fit.jsx'
+import { FIGS as grained } from './figs-grained.jsx'
+import { FIGS as atelier } from './figs-atelier.jsx'
+import { FIGS as pilotSw } from './figs-pilot-sw.jsx'
+import { FIGS as minimalRally } from './figs-minimal-rally.jsx'
+import { FIGS as extras } from './figs-extras.jsx'
 
 export const FIGS = {
   ...overview,
@@ -23,6 +28,11 @@ export const FIGS = {
   ...paddedRally,
   ...bundSpNosew,
   ...qrExoticFit,
+  ...grained,
+  ...atelier,
+  ...pilotSw,
+  ...minimalRally,
+  ...extras,
 }
 
 export default function StrapFigure({ id }) {

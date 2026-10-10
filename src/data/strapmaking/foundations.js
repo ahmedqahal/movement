@@ -61,7 +61,7 @@ export const FOUNDATIONS = [
       },
       {
         title: 'Ten straps, one build with switches',
-        body: 'The ten constructions in this course look different but share one build: lined or unlined, cut or turned edge, flat or padded, sewn or riveted. Classic lined, unlined, rembordé, padded, rally, Bund, single-pass, no-sew, quick-release and exotic each change one or two switches. Learn the shared techniques once and every build becomes a sequence you already know.',
+        body: 'The ten constructions in this course look different but share one build: lined or unlined, cut or turned edge, flat or padded, sewn or riveted. Classic lined, unlined, rembordé, padded, rally, Bund, single-pass, no-sew, quick-release and exotic each change one or two switches — and the pilot, minimal-stitch and smartwatch builds later in the course are three more combinations of the same switches. Learn the shared techniques once and every build becomes a sequence you already know.',
         figure: 'strap:family',
         caption: 'The ten constructions, each shown as a cross-section across the strap.',
       },
@@ -94,13 +94,13 @@ export const FOUNDATIONS = [
       },
       {
         title: 'The standard stack',
-        body: 'The reference flat strap is a firm veg-tan top of 1.0–1.2 mm, a 0.2 mm non-stretch reinforcement, and a calf lining of 0.5–1.0 mm — about 2.2–2.5 mm finished. A useful rule links the two: a 0.5 mm lining under a 1.5–2 mm top, a 1 mm lining under a thinner top. Padded straps add a filler and finish at 3.5–5 mm at the lug, tapering back to flat-strap thickness at the tail.',
+        body: 'The reference flat strap is a firm veg-tan top of 1.0–1.2 mm, a 0.2 mm non-stretch reinforcement, and a calf lining of 0.5–1.0 mm — about 2.2–2.5 mm finished. A useful rule links the two: a 0.5 mm lining under a 1.5–2 mm top, a 1 mm lining under a thinner top. Padded straps add a filler and finish at 3.5–5 mm at the lug (heavily padded ones 6–7 mm), tapering back to flat-strap thickness at the tail.',
         figure: 'strap:stack-standard',
         caption: 'Section through the standard stack, with each layer’s thickness.',
       },
       {
         title: 'Named top leathers',
-        body: 'Haas Barenia (finished at 2–2.5 mm, so split it down for a lined strap) and Walpier Buttero (sold around 1.2–1.4 mm) are the classic firm veg-tans. Horween Chromexcel is a pull-up leather: oily, beautiful, but it stretches and will not burnish. Shell cordovan is dense, only 1–2 mm thick and varies horse to horse. Goat (e.g. Alran caviar at ~1.2 mm) and kangaroo (0.9–1.2 mm) are strong and thin. Unlined straps go heavier: 2.0–2.4 mm veg-tan or Horween.',
+        body: 'Haas Barenia (finished at 2–2.5 mm, so split it down for a lined strap) and Walpier Buttero (sold around 1.2–1.4 mm) are the classic firm veg-tans. Horween Chromexcel is a pull-up leather: oily, beautiful, but it stretches and will not burnish. Shell cordovan is dense, only 1–2 mm thick and varies horse to horse. Goat (e.g. Alran caviar at ~1.2 mm) and kangaroo (0.9–1.2 mm) are strong and thin. Unlined straps go heavier: 2.0–2.4 mm veg-tan or Horween. Grained and napped leathers — Epsom, Togo, chèvre, nubuck, suede — have their own lesson next.',
         figure: 'strap:leathers',
         caption: 'The common strap leathers, their working thickness and which edge each takes.',
       },
@@ -211,7 +211,7 @@ export const FOUNDATIONS = [
       },
       {
         title: 'The matched set: pitch, thread, needle, iron',
-        body: 'Thread, needle and iron must match. 2.7 mm pitch: 0.40–0.45 mm thread, JJ 004, VB #10 — fine dress. 3.0 mm: 0.45–0.55 mm, JJ 004, VB #9 — the default. 3.38 mm: 0.55–0.6 mm, JJ 004 or 002, VB #8 — bolder, 20–24 mm straps. 3.85–4.0 mm: 0.6 mm, JJ 002 — casual and rugged. Charts disagree on needles, so test on scrap.',
+        body: 'Thread, needle and iron must match. 2.7 mm pitch: 0.40–0.45 mm thread, JJ 004, VB #10 — fine dress. 3.0 mm: 0.45–0.55 mm, JJ 004, VB #9 — the default. 3.38 mm: 0.55–0.6 mm, JJ 004 or 002, VB #8 — bolder, 20–24 mm straps. 3.85–4.0 mm: 0.6 mm, JJ 002 — casual and rugged. Charts disagree on needles, so test on scrap. Premium makers sew finer still — 2.25–2.45 mm with 0.35 mm linen; that grade has its own lesson (Atelier grade).',
         figure: 'strap:tool-matched',
         caption: 'Four matched sets and the stitch each one makes, drawn at the same scale.',
       },
@@ -262,15 +262,21 @@ export const FOUNDATIONS = [
       },
       {
         title: 'Choose the finished lengths',
-        body: 'By lug width (long / short): 16 mm → 105/65, 18 mm → 115/75, 20 mm → 120/80, 22 mm → 130/90. By wrist: about 105/65 for 14.5–17 cm, 115/70–75 for 16.5–19 cm, 125/75–80 for 18.5–21 cm. Cross-check one against the other; this course’s regular size is 115/75. Lengths are measured from the bar centre to the tip, and from the bar centre to the buckle fold.',
+        body: 'By lug width (long / short): 16 mm → 105/65, 18 mm → 115/75, 20 mm → 120/80, 22 mm → 130/90. By wrist: about 105/65 for 14.5–17 cm, 115/70–75 for 16.5–19 cm, 125/75–80 for 18.5–21 cm. Cross-check one against the other; this course’s regular size is 115/75. Makers’ own tables differ slightly — 105/65, 115/70–75, 125/75–85 — mostly in the short piece, which sets where the buckle sits on the wrist. Lengths are measured from the bar centre to the tip, and from the bar centre to the buckle fold.',
         figure: 'strap:t1-lengths',
         caption: 'Lengths by lug width and by wrist, and the datum each is measured from.',
       },
       {
         title: 'Draw the centreline and taper',
-        body: 'Draw a centreline, then the outline. Most straps taper 2 mm from lug to buckle (20 → 18, 22 → 20); a dressier taper is 4 mm (20 → 16). Keep the full lug width for the first 8 mm behind the fold, then taper in a straight line to the buckle fold on the short piece and to just before the tip on the long piece.',
+        body: 'Draw a centreline, then the outline. Sports straps usually taper 2 mm from lug to buckle (20 → 18, 22 → 20); premium dress makers standardise on 4 mm (20 → 16, 22 → 18) and cap it at about 5 mm. Keep the full lug width for the first 8 mm behind the fold, then taper in a straight line to the buckle fold on the short piece and to just before the tip on the long piece.',
         figure: 'strap:t1-taper',
         caption: 'Centreline and a straight 2 mm taper on both pieces.',
+      },
+      {
+        title: 'Variant · front-loaded taper',
+        body: 'Many commercial straps don’t taper evenly: the long piece reaches its narrow width within about 45–50 mm of the bar, then runs parallel through the holes to the tip, so the keepers fit the same at every hole and the tip stays full. Makers also often fit one buckle width to several lug widths — a 16 mm buckle on 18, 19, 20 and 21 mm straps.',
+        figure: 'strap:t1-frontload',
+        caption: 'Straight taper versus front-loaded taper on the same long piece.',
       },
       {
         title: 'Add the fold allowances',
@@ -291,6 +297,12 @@ export const FOUNDATIONS = [
         caption: 'Holes on the centreline from 25 mm before the tip at 7 mm centres; stitch stops behind the fold.',
       },
       {
+        title: 'Place the middle hole',
+        body: 'One maker places the middle hole at about 60–65% of the long piece from the bar centre — 63, 71 and 81 mm on 105, 115 and 125 mm pieces — then steps out 6 mm each way for seven holes, which lands the last one about 25 mm from the tip. Fit target: the pin in hole 3–5 of 7. Lengths decide fit; adjust them rather than the number of holes.',
+        figure: 'strap:t1-midhole',
+        caption: 'The middle hole at about 0.6 of the long piece (0.60–0.65), seven holes at 6 mm.',
+      },
+      {
         title: 'Mark the slot and fixed keeper',
         body: 'On the short piece, mark the tongue slot about 10 mm long, centred on the buckle fold line, and the fixed keeper’s line about 10 mm behind the fold.',
         figure: 'strap:t1-slot',
@@ -301,6 +313,12 @@ export const FOUNDATIONS = [
         body: 'Design the colours as one decision. Match the leather to the dial. Match the thread to the hands or markers — or keep it tonal with the leather when the dial and markers already contrast strongly. For a quiet strap, let only the lining carry the accent colour. Glossy finishes read formal; matte reads casual.',
         figure: 'strap:t1-colours',
         caption: 'Leather to the dial, thread to the hands, an accent in the lining.',
+      },
+      {
+        title: 'Design the colour system',
+        body: 'Decide five colours, not three: top, lining, thread, edge paint and keepers. Tonal: thread and edge both match the leather. Two-tone: edge paint matched to the thread rather than the leather, keepers cut from a second leather and a contrasting lining — for example dark-grey chèvre, pearl-grey thread and edges, light-grey keepers, black lining. A two-tone pair can also swap colours: each piece in one colour, stitched in the other’s. Remember a saddle stitch shows the same thread colour on both faces.',
+        figure: 'strap:t1-twotone',
+        caption: 'The five colour zones, in a tonal and a two-tone scheme.',
       },
       {
         title: 'Make the template',

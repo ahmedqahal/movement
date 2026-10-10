@@ -60,6 +60,13 @@ up to h ≈ 340 — dense is fine, cluttered is not.
 - Helpers you need go in **your own file**. Do not edit shared files
   (`kit`, `parts`, `sections`, `tools`, `geom`, `index`, `sampler`, other
   `figs-*`). If a shared primitive misbehaves, work round it locally and say so.
+- Never name a local variable `T`: it shadows the kit's `<T>` text component and
+  crashes rendering ("type is invalid … got: number").
+- Lessons that need new primitives have built them locally in earlier files —
+  e.g. `Magnifier`/`Inset` (figs-materials, figs-qr-exotic-fit), `VDim`/`HDim`,
+  `domeG`/`DomeX`/`PadLong` (figs-padded-rally), `TurnSec` (figs-unlined-remborde),
+  stitch-path helpers (figs-stitch), `Edge`/`Loupe` (figs-finish). Read them and
+  copy what you need into your own file rather than importing across files.
 - Registry, at the end of the file, one entry per line, exactly:
 
   ```js

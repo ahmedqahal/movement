@@ -329,7 +329,7 @@ export const TECHNIQUES = [
       },
       {
         title: 'Set the dividers',
-        body: 'Set the wing dividers to the margin: 2.75–3 mm is the default. Narrow (1.5–2 mm) looks finer but leaves less leather outside the thread.',
+        body: 'Set the wing dividers to the margin: 2.75–3 mm is the default for a 3 mm pitch. Narrow (1.5–2 mm) looks finer but leaves less leather outside the thread; premium slim straps sit at about 2 mm with a finer pitch and thread.',
         figure: 'strap:t7-dividers',
         caption: 'Margins in use, 1.5 to 3.2 mm — this course: 2.75–3 mm.',
       },
@@ -647,6 +647,12 @@ export const TECHNIQUES = [
         caption: 'Heat-set and waxed.',
       },
       {
+        title: 'Choose the edge colour',
+        body: 'Match the edge to the top for a quiet strap; one or two shades darker frames a light leather (one maker’s hazel strap has an edge almost black); or match the paint to the thread for a two-tone scheme. On a pigment-finished leather with a different core colour, paint every cut edge. Mix the paint and test a stripe on an offcut — it dries lighter or darker.',
+        figure: 'strap:t10p-colour',
+        caption: 'Matched, darker and thread-matched edges, and a test stripe.',
+      },
+      {
         title: 'Where paint never goes',
         body: 'No paint on the lug horns or on the spine of any fold: it rubs off and cracks there. Stop the coat where the fold begins.',
         figure: 'strap:t10p-nogo',
@@ -695,6 +701,12 @@ export const TECHNIQUES = [
         body: 'Seven holes is standard (nine or ten for a large men’s wrist), with the middle one at the wearer’s size and the last about 25 mm from the tip.',
         figure: 'strap:t11-count',
         caption: 'Seven holes, middle at wrist size, last 25 mm from the tip.',
+      },
+      {
+        title: 'What commercial straps use',
+        body: 'Measured pairs vary more than you’d think: eight holes at 5 mm (last about 33 mm from the tip), six at about 6.6 mm, seven at 6 mm, six or seven at about 7.3 mm (last about 24 mm). A finer pitch gives finer adjustment over the same span — measured spans, first hole to last, run about 33–45 mm. Round holes suit a standard tongue; oval holes pair with a wide, flat tongue on chunky straps.',
+        figure: 'strap:t11-ladders',
+        caption: 'Three commercial hole ladders to scale on the same tip.',
       },
       {
         title: 'Punch',
@@ -833,6 +845,42 @@ export const TECHNIQUES = [
         caption: 'The lug fold stays bare.',
       },
       {
+        title: 'Measure the strap over the bar',
+        body: 'A 2.2 mm flat strap measures about 2.8 mm over a 1.5–1.8 mm bar. Check that figure — not the body thickness — against the space between the lug holes and the case.',
+        figure: 'strap:t13-overbar',
+        caption: 'The lug loop: 2.2 mm body, about 2.8 mm over the bar.',
+      },
+      {
+        title: 'Top-loading for low-drilled lugs',
+        body: 'Watches designed for bracelets often have the bar holes drilled low or far from the case, so a normal strap sits under the lug tips and leaves “ears”. Don’t thicken the whole strap: laminate an extra layer over the lug end only, so the face rises flush with the lugs while the body stays slim, and skive its back edge to a feather so no step shows.',
+        figure: 'strap:t13-topload',
+        caption: 'A standard strap under the lug tips, and a top-loaded one flush.',
+      },
+      {
+        title: 'Curved ends — only where the case needs them',
+        body: 'Cases with short lugs and holes close to the body need a curved bar, and the lug fold follows its curve. Keep the bar-to-tip distance the same as on a straight strap and use no insert — the fit is close but never perfectly flush (a flush fit needs a watch-specific insert). Never fit curved ends to a watch that takes straight straps: the gap gets bigger.',
+        figure: 'strap:t13-curved',
+        caption: 'Straight strap, curved strap on a curved-lug case, and the wrong pairing.',
+      },
+      {
+        title: 'Thin lug ends for short lugs',
+        body: 'On rectangular cases and round cases with short or sharp lugs, thin the leather round the lugs rather than switching to curved ends. Whole straps can go down to about 1.5 mm for vintage dress watches and fold-over clasps.',
+        figure: 'strap:t13-thinlug',
+        caption: 'The lug end thinned locally to clear a short lug.',
+      },
+      {
+        title: 'Variant · exposed return flap',
+        body: 'Instead of hiding the tail between top and lining, stop the lining at the flap and let the folded top show on the underside as a 6–8 mm band in the top colour. Skive the lining end to nothing so it laps the flap’s feathered edge and lies flat; the side seams lock the flap.',
+        figure: 'strap:t13-exposed',
+        caption: 'The underside band and the butt joint in section.',
+      },
+      {
+        title: 'Variant · closed lug end',
+        body: 'Run the perimeter seam across the strap at the lug end, just past the bar. Measure the bar first and leave about 1 mm of clearance — the cross seam fixes the tunnel size for good, and it must clear a quick-release lever.',
+        figure: 'strap:t13-closed',
+        caption: 'A U-seam closing the tunnel, and its clearance to the bar.',
+      },
+      {
         title: 'QR: locate the knob',
         body: 'For a quick-release bar, insert it and mark where the knob presses on the underside of the loop.',
         figure: 'strap:t13-knob',
@@ -882,6 +930,12 @@ export const TECHNIQUES = [
         body: 'Rub a damp white cloth hard on a hidden spot. Clean cloth: done. Colour on the cloth: another sealing coat.',
         figure: 'strap:t14-test',
         caption: 'The damp white-cloth rub test.',
+      },
+      {
+        title: 'Variant · antique hand-painted finish',
+        body: 'On flat veg-tan, lay a light base dye, then work a darker stain in by hand — heavier at the edges and the bar ends, lighter on the high spots — and wipe back while wet. Buff, wax, buff again and seal; paint the edges in the dark colour. No two straps match; that is the point.',
+        figure: 'strap:t14-antique',
+        caption: 'Base, dark rub and wax: an antique finish built in three stages.',
       },
       {
         title: 'Condition',
