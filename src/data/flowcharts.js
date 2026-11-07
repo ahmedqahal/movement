@@ -1,8 +1,10 @@
+import { MORE_FLOWCHARTS } from './flowcharts-extra.js'
+
 // Interactive diagnostic decision trees.
 // A node is a QUESTION (has `text` + `options[{label,next}]`) or a
 // LEAF (has `conclusion`, optional `lessonId`, and a `tone`).
 
-export const FLOWCHARTS = [
+const BASE_FLOWCHARTS = [
   {
     id: 'wont-run',
     title: 'My watch won’t run',
@@ -49,7 +51,7 @@ export const FLOWCHARTS = [
         ],
       },
       'leaf-module1': {
-        conclusion: 'A 4-second jump on a NEW cell is the low-battery signal coming from upstream — the module. Try the reset (AC) pad; if it still stutters, replace the module.',
+        conclusion: 'A 4-second jump straight after fitting a new cell can be normal, because many chips only re-check the voltage about once a minute and some wait longer. Give it a few minutes. If it persists, look for mechanical load first: sluggish gears, hands touching, or particles on the rotor. Try the reset (AC) contact if the calibre has one, and only then replace the module.',
         lessonId: 'quartz-module',
         tone: 'warn',
       },
@@ -134,7 +136,7 @@ export const FLOWCHARTS = [
         tone: 'bad',
       },
       'leaf-regulate': {
-        conclusion: 'Healthy but a touch off — it simply needs regulating. Aim for a small daily gain (0 to +8 s/day).',
+        conclusion: 'Healthy but a touch off — it simply needs regulating. Aim for a small daily gain (0 to +10 s/day).',
         lessonId: 'mech-regulate',
         tone: 'good',
       },
@@ -240,19 +242,25 @@ export const FLOWCHARTS = [
         tone: 'good',
       },
       'leaf-4sec': {
-        conclusion: 'A 4-second jump on a fresh cell is the IC’s low-power warning firing wrongly — usually a poor contact or a failing module. Try the AC reset pad; if it persists, replace the module.',
+        conclusion: 'A 4-second jump straight after fitting a new cell can be normal, because many chips only re-check the voltage about once a minute and some wait longer. Give it a few minutes. If it persists, check for a poor contact and mechanical load: sluggish gears, hands touching, or rotor particles. Try the reset (AC) contact if the calibre has one, and only then replace the module.',
         lessonId: 'quartz-diagnose',
         tone: 'warn',
       },
       coil: {
         text: 'Measure the motor coil with a multimeter (kΩ). What do you read?',
         options: [
-          { label: 'About 1.5–3 kΩ', next: 'current' },
+          { label: 'About 1–3 kΩ, or in the calibre’s range', next: 'current' },
           { label: 'Open circuit (OL / infinite)', next: 'leaf-coil' },
+          { label: 'Far below the range', next: 'leaf-coil-short' },
         ],
       },
       'leaf-coil': {
         conclusion: 'An open coil — the hair-fine winding has broken or corroded through. That’s a module replacement.',
+        lessonId: 'quartz-test',
+        tone: 'bad',
+      },
+      'leaf-coil-short': {
+        conclusion: 'A reading far below the calibre’s range points to shorted turns in the coil, which is a module replacement. Check the sheet first if you have one: an ETA 955 coil is 1.30–1.80 kΩ, so low readings vary by calibre.',
         lessonId: 'quartz-test',
         tone: 'bad',
       },
@@ -282,6 +290,8 @@ export const FLOWCHARTS = [
     },
   },
 ]
+
+export const FLOWCHARTS = [...BASE_FLOWCHARTS, ...MORE_FLOWCHARTS]
 
 export function getFlowchart(id) {
   return FLOWCHARTS.find((f) => f.id === id)

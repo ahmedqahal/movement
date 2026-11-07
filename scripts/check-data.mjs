@@ -32,6 +32,15 @@ const figKeys = new Set([
   ...[...stepSrc.matchAll(/^\s{2}(\w+):\s*'\/illustrations/gm)].map((m) => m[1]),
   ...[...stepSrc.matchAll(/^\s{2}(\w+):\s*[A-Z]\w+,/gm)].map((m) => m[1]),
 ])
+// bench diagrams: registry entries in components/bench/figs-*.jsx
+const benchDir = path.join(root, 'src/components/bench')
+const benchIds = new Set(
+  fs
+    .readdirSync(benchDir)
+    .filter((f) => /^figs-.*\.jsx$/.test(f))
+    .flatMap((f) => [...read(`src/components/bench/${f}`).matchAll(/^\s{2}'([a-z0-9-]+)':\s*[A-Z]\w*,?\s*$/gm)].map((m) => m[1]))
+)
+
 // strap diagrams: registry entries in components/strap/figs-*.jsx
 const strapDir = path.join(root, 'src/components/strap')
 const strapIds = new Set(
@@ -60,6 +69,8 @@ for (const l of lessons) {
       if (!illusIds.has(f.slice(6))) fail(`${l.id}: unknown illustration "${f}"`)
     } else if (f.startsWith('plate:')) {
       if (!plateIds.has(f.slice(6))) fail(`${l.id}: unknown plate "${f}"`)
+    } else if (f.startsWith('bench:')) {
+      if (!benchIds.has(f.slice(6))) fail(`${l.id}: unknown bench diagram "${f}"`)
     } else if (f.startsWith('strap:')) {
       if (!strapIds.has(f.slice(6))) fail(`${l.id}: unknown strap diagram "${f}"`)
     } else if (!figKeys.has(f)) {
@@ -75,8 +86,13 @@ for (const l of TRACKS.find((t) => t.id === 'strapmaking')?.lessons || []) {
   })
 }
 
-// 3 — quiz answers are in range
+// 3 — every lesson has a quiz, and answers are in range. Options are shuffled at
+// runtime, so wording that depends on position can't be used.
 for (const l of lessons) {
+  if ((l.quiz || []).length < 3) fail(`${l.id}: needs a quiz of at least 3 questions`)
+  for (const [i, q] of (l.quiz || []).entries()) {
+    if (q.options?.some((o) => /\b(all|none) of the above\b|\bboth [ab]\b/i.test(o))) fail(`${l.id} quiz ${i + 1}: position-based option`)
+  }
   for (const [i, q] of (l.quiz || []).entries()) {
     if (!Array.isArray(q.options) || q.options.length < 2) fail(`${l.id} quiz ${i + 1}: needs options`)
     if (typeof q.answer !== 'number' || q.answer < 0 || q.answer >= q.options.length)
@@ -148,6 +164,7 @@ const counts = {
   movements: MOVEMENTS.length,
   reference: REFERENCE.length,
   'strap diagrams': strapIds.size,
+  'bench diagrams': benchIds.size,
 }
 console.log('content:', Object.entries(counts).map(([k, v]) => `${v} ${k}`).join(' · '))
 

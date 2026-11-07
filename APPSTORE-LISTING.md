@@ -16,7 +16,7 @@ Learn watchmaking, hands-on
 
 ## Promotional text (170 max — editable without a new build)
 ```
-83 lessons, 48 hand-drawn plates and interactive diagrams that take you from your first strap change to a full mechanical service. Works completely offline.
+163 lessons and over 640 technical diagrams take you from your first strap change to a full mechanical service. Works completely offline.
 ```
 
 ## Description (4000 max)
@@ -27,24 +27,27 @@ Start by changing a strap. Finish by stripping, cleaning, oiling and regulating 
 
 WHAT'S INSIDE
 
-• 83 lessons across 11 tracks, from everyday care to full servicing
+• 163 lessons across 14 tracks, from everyday care to full servicing, with over 640 technical diagrams
 • A guided "First Project" path if you don't know where to begin
 • Interactive diagrams you can explore — watch the escapement tick, toggle the keyless works between winding and setting, run a chronograph's start, stop and reset
 • 17 illustrated plates with tappable labels on every part
-• Complete service walkthroughs for three real calibres: the ETA/Unitas 6497, the Seiko NH35 and the ETA 2824-2
-• Guides to 15 movements you'll actually meet, with specs, common faults and service notes
+• Complete service walkthroughs for real calibres, including the ETA/Unitas 6497, the Seiko NH35 and the ETA 2824-2
+• Reading the Machine: learn to read a timegrapher, decode every trace, and find the fault when a service falls short
+• Casework and water resistance: crystals, gaskets, crowns, bezels, bracelets and how to prove a case still seals
+• A complete course on making your own leather straps
+• Guides to 85 movements you'll actually meet, with specs, common faults and service notes
 
 LEARN BY DOING
 
 • Diagnostic decision trees — answer a few questions and get to the likely cause, then straight to the fix
-• Quizzes on every track, plus a "review weak spots" mode that revisits what you got wrong
+• A quiz on every lesson, plus a "review weak spots" mode and spaced review that revisits what you got wrong
 • A private practice log for the watches you work on: notes, tags, photos, and a service history
 
 BENCH TOOLS
 
 • Calculators for daily rate, beat rate, power reserve, amplitude and beat error, strap sizing and battery cross-reference
 • Printable cheat-sheets for the oiling chart, water resistance, battery codes and lug sizes
-• A glossary and in-depth reference guides
+• A 588-term glossary, 53 tool cards and 26 in-depth reference guides
 
 BUILT FOR THE BENCH
 

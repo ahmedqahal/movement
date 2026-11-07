@@ -180,7 +180,7 @@ export const BUILDS = [
       },
       {
         title: '24 · Saddle-stitch',
-        body: 'Thread of 0.4–0.55 mm. Lock the fold zones with doubled stitches and backstitch to finish on the lining side.',
+        body: 'Thread of 0.45–0.55 mm. Lock the fold zones with doubled stitches and backstitch to finish on the lining side.',
         figure: 'strap:c-stitch',
         caption: 'Stitched, folds locked, finished on the lining side.',
       },

@@ -75,9 +75,11 @@ export function ProgressProvider({ children }) {
   const scheduleReview = useCallback((lessonId, passed) => {
     setSrs((prev) => {
       const cur = prev[lessonId]
+      const now = Date.now()
+      // A pass before the review is due is only a retake, so it earns no longer interval.
+      if (passed && cur && cur.due > now) return prev
       const base = cur && cur.box > 0 ? cur.box : 1
       const box = passed ? Math.min(base + 1, SRS_DAYS.length - 1) : 1
-      const now = Date.now()
       return { ...prev, [lessonId]: { box, due: now + SRS_DAYS[box] * DAY, last: now } }
     })
   }, [])

@@ -3490,3 +3490,10 @@ button {
 .guide-opt.sel { border-color: var(--brass-line); background: var(--brass-soft); }
 .guide-opt.sel > svg { color: var(--brass); }
 .guide-cta { margin-top: 22px; }
+
+button.track-chip { font: inherit; font-size: 0.85rem; cursor: pointer; }
+
+.mv-source { margin: 8px 0 0; font-size: 0.78rem; color: var(--text-faint); }
+
+/* Wide tables scroll inside their own wrapper, so grid items must be free to shrink. */
+.reference__nav, .reference__body, .calc { min-width: 0; }

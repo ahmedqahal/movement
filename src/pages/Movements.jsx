@@ -4,7 +4,13 @@ import { MOVEMENTS, MOVEMENT_TYPES } from '../data/movements.js'
 import { IconArrow } from '../components/Icons.jsx'
 import useFocusScroll from '../lib/useFocusScroll.js'
 
-const TYPE_LABEL = { Automatic: 'Automatic mechanical', Manual: 'Manual mechanical', Quartz: 'Quartz' }
+const TYPE_LABEL = {
+  Automatic: 'Automatic mechanical',
+  Manual: 'Manual mechanical',
+  Quartz: 'Quartz',
+  'Solar & kinetic': 'Solar & kinetic',
+  'Other electronic': 'Other electronic',
+}
 
 function MovementCard({ m }) {
   return (
@@ -31,6 +37,13 @@ function MovementCard({ m }) {
           </div>
         ))}
       </div>
+      {m.source && (
+        <p className="mv-source">
+          {m.source === 'maker'
+            ? 'Figures from the maker’s own sheet.'
+            : 'Typical figures from reference listings, not a maker’s sheet. Check your calibre before relying on them.'}
+        </p>
+      )}
 
       <div className="mv-card__body">
         <p>
@@ -47,7 +60,7 @@ function MovementCard({ m }) {
 
       {m.lessonId && (
         <Link className="mv-card__link" to={`/learn/${m.lessonId}`}>
-          Full service walkthrough <IconArrow size={15} />
+          {m.lessonId.startsWith('svc-') ? 'Full service walkthrough' : 'Related lesson'} <IconArrow size={15} />
         </Link>
       )}
     </article>

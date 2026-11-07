@@ -2,23 +2,9 @@ import { useEffect, useMemo, useState } from 'react'
 import { TRACKS } from '../data/lessons.js'
 import { useProgress } from '../context/ProgressContext.jsx'
 import { IconCheck, IconClose, IconBulb, IconClock } from '../components/Icons.jsx'
+import { shuffle, shuffleOptions } from '../lib/quiz.js'
 
 const QUIZ_COUNT = 10
-
-function shuffle(arr) {
-  const a = [...arr]
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
-
-// Randomise the answer options and remap which index is correct.
-function shuffleOptions(q) {
-  const order = shuffle(q.options.map((_, i) => i))
-  return { ...q, options: order.map((i) => q.options[i]), answer: order.indexOf(q.answer) }
-}
 
 function buildPools() {
   return TRACKS.map((t) => ({
@@ -36,7 +22,7 @@ function Runner({ questions, onRestart, onBack, onFinish }) {
   const finished = answered === total
 
   useEffect(() => {
-    if (finished && onFinish) onFinish(score, total)
+    if (finished && onFinish) onFinish(questions.map((q, i) => ({ lessonId: q.lessonId, correct: answers[i] === q.answer })))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [finished])
 
@@ -130,7 +116,7 @@ export default function TestYourself() {
   const duePool = {
     id: 'due',
     name: 'Due for review',
-    questions: dueLessons.flatMap((l) => l.quiz.map((q) => ({ ...q, lesson: l.title }))),
+    questions: dueLessons.flatMap((l) => l.quiz.map((q) => ({ ...q, lesson: l.title, lessonId: l.id }))),
   }
   const allPool = useMemo(
     () => ({ id: 'all', name: 'All tracks', questions: pools.flatMap((p) => p.questions) }),
@@ -158,10 +144,17 @@ export default function TestYourself() {
           ? duePool
           : pools.find((p) => p.id === trackId)
 
-  // When a due-review session finishes, reschedule every lesson it covered.
-  const onDueFinish = (score, total) => {
-    const passed = total > 0 && score >= Math.ceil(total * 0.8)
-    dueLessons.forEach((l) => scheduleReview(l.id, passed))
+  // A session samples the due questions, so score each lesson on its own questions
+  // and leave any lesson that wasn't asked still due.
+  const onDueFinish = (results) => {
+    const byLesson = new Map()
+    for (const { lessonId, correct } of results) {
+      const r = byLesson.get(lessonId) || { score: 0, total: 0 }
+      r.total += 1
+      if (correct) r.score += 1
+      byLesson.set(lessonId, r)
+    }
+    byLesson.forEach((r, id) => scheduleReview(id, r.score >= Math.ceil(r.total * 0.8)))
   }
 
   const questions = useMemo(

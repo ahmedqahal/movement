@@ -39,7 +39,7 @@ export const DIAGRAMS = [
     id: 'escapement',
     name: 'Escapement',
     tagline: 'The tick: how a Swiss lever escapement works',
-    note: 'The escapement is the referee between stored power and timekeeping — a lever escapement, perfected from Thomas Mudge’s design of 1750. Every beat has three actions: a tooth locks on a pallet, “draw” holds the fork tight against its banking pin for safety, then the tooth’s impulse face drives the fork, which nudges the balance onward.',
+    note: 'The escapement is the referee between stored power and timekeeping — a lever escapement, developed from Thomas Mudge’s design of about 1754. Every beat has three actions: a tooth locks on a pallet, “draw” holds the fork tight against its banking pin for safety, then the tooth’s impulse face drives the fork, which nudges the balance onward.',
     parts: [
       { id: 'esc-wheel', name: 'Escape wheel', role: 'regulator', detail: 'Powered from the mainspring through the train, it constantly tries to turn. Most have 15 teeth in the modern “club-tooth” form — a flat impulse face plus a locking face (older English wheels used pointed ratchet teeth). The pallet fork releases it one tooth at a time, turning continuous drive into discrete beats.' },
       { id: 'esc-fork', name: 'Pallet fork', role: 'regulator', detail: 'A lever tipped with two pallet stones. Each beat it performs lock (a tooth rests on a pallet), draw (the angled locking face pulls the fork firmly against a banking pin so it can’t unlock accidentally), and impulse (the tooth’s lifting face drives the fork across). Total lever travel is only about 10°.' },

@@ -1,14 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useProgress } from '../context/ProgressContext.jsx'
 import { IconCheck, IconClose, IconBulb } from './Icons.jsx'
+import { shuffleOptions } from '../lib/quiz.js'
 
 // quiz = [{ q, options: [...], answer: <index>, explain }]
 export default function Quiz({ quiz, lessonId }) {
   const { recordQuiz, quizResult, scheduleReview } = useProgress()
   const [answers, setAnswers] = useState({}) // qIndex -> chosen index
-  const total = quiz.length
+  const [attempt, setAttempt] = useState(0)
+  // Fresh option order each attempt, so a retake tests recall rather than position.
+  const questions = useMemo(() => quiz.map(shuffleOptions), [quiz, attempt])
+  const total = questions.length
   const answeredCount = Object.keys(answers).length
-  const score = quiz.reduce((n, q, i) => n + (answers[i] === q.answer ? 1 : 0), 0)
+  const score = questions.reduce((n, q, i) => n + (answers[i] === q.answer ? 1 : 0), 0)
   const finished = answeredCount === total
   const best = quizResult(lessonId)
 
@@ -24,7 +28,10 @@ export default function Quiz({ quiz, lessonId }) {
     if (answers[qi] !== undefined) return // lock once answered
     setAnswers((a) => ({ ...a, [qi]: oi }))
   }
-  const retake = () => setAnswers({})
+  const retake = () => {
+    setAnswers({})
+    setAttempt((a) => a + 1)
+  }
 
   return (
     <section className="quiz">
@@ -37,7 +44,7 @@ export default function Quiz({ quiz, lessonId }) {
         )}
       </div>
 
-      {quiz.map((q, qi) => {
+      {questions.map((q, qi) => {
         const chosen = answers[qi]
         const done = chosen !== undefined
         return (

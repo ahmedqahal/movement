@@ -32,6 +32,8 @@ import {
 const LESSONS = allLessons().length
 const STRAP = TRACKS.find((t) => t.id === 'strapmaking')
 const STRAP_STEPS = STRAP ? STRAP.lessons.reduce((n, l) => n + l.steps.length, 0) : 0
+const TIMING = TRACKS.find((t) => t.id === 'timing')
+const CASEWORK = TRACKS.find((t) => t.id === 'casework')
 
 // The section launcher: a grid of blocks, one per section — a brass icon,
 // a serif title, a one-line "what's inside". Counts come straight from the
@@ -133,6 +135,27 @@ export default function Home() {
           </span>
         </Link>
       )}
+
+      {[
+        { t: TIMING, Icon: IconPulse, sub: 'read a timegrapher, decode every trace, and find the fault when a service falls short.' },
+        { t: CASEWORK, Icon: IconLayers, sub: 'crystals, gaskets, crowns, bezels and bracelets, and how to prove the case still seals.' },
+      ].map(({ t, Icon, sub }) => (
+        <Link key={t.id} to={`/learn?t=${t.id}`} className="card feature-course">
+          <span className="feature-course__icon">
+            <Icon size={26} />
+          </span>
+          <span className="feature-course__text">
+            <span className="feature-course__eyebrow">New track</span>
+            <b>{t.name}</b>
+            <span>
+              {t.lessons.length} lessons: {sub}
+            </span>
+          </span>
+          <span className="feature-course__go">
+            Open <IconArrow size={16} />
+          </span>
+        </Link>
+      ))}
 
       <div className="launch-grid">
         {PRIMARY.map((b) => (

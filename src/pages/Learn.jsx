@@ -12,8 +12,7 @@ import {
   IconTools,
   IconAlert,
   IconClock,
-  IconLevel,
-} from '../components/Icons.jsx'
+  IconLevel, IconPulse, IconLayers } from '../components/Icons.jsx'
 
 const TRACK_ICON = {
   strap: IconStrap,
@@ -25,6 +24,8 @@ const TRACK_ICON = {
   alert: IconAlert,
   clock: IconClock,
   level: IconLevel,
+  pulse: IconPulse,
+  layers: IconLayers,
 }
 
 export default function Learn() {

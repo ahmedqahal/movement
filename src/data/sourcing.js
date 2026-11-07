@@ -34,7 +34,7 @@ export const KITS = [
       { name: 'Timegrapher (or this app’s)', why: 'Read rate, beat error and amplitude to regulate properly.' },
       { name: 'Demagnetiser', why: 'A magnetised hairspring makes a watch gain wildly — this fixes it in a second.' },
       { name: 'Watch oils (e.g. 9010, HP-1300) + oilers', why: 'Right oil, right jewel, right amount — the heart of a service.' },
-      { name: 'Silicone grease', why: 'For gaskets, keyless works and the mainspring barrel wall.' },
+      { name: 'Silicone grease', why: 'For case, caseback and crown gaskets only. It doesn’t belong in the movement.' },
       { name: 'Digital calliper', why: 'Measure lug width, crystal and movement diameters to order parts.' },
       { name: 'Pegwood', why: 'Clean pivots and jewel holes without scratching.' },
     ],
@@ -108,9 +108,9 @@ export const PARTS_GUIDE = [
 // Consumables cheat-list — the specific oils/greases people ask about.
 export const CONSUMABLES = [
   { name: 'Moebius 9010', use: 'Fast-rotating, lightly-loaded pivots — escape wheel, train wheels, balance jewels.' },
-  { name: 'Moebius HP-1300 (or 9104)', use: 'Slower, more heavily-loaded pivots — barrel arbor, centre wheel, keyless.' },
+  { name: 'Moebius HP-1300 (sold as 9104)', use: 'Slower, more heavily-loaded pivots — barrel arbor, centre wheel, keyless.' },
   { name: 'Moebius 9415', use: 'Grease for the pallet stones / escape-wheel teeth (the impulse surfaces).' },
   { name: 'Moebius 8200 / Kluber P125', use: 'Mainspring lubrication (8200 for manual barrels; braking grease for automatic barrel walls).' },
-  { name: 'Silicone grease', use: 'Case, caseback and crown gaskets; keyless works.' },
-  { name: 'Epilame (e.g. Fixodrop)', use: 'Surface treatment that stops oil spreading off jewels — advanced, optional.' },
+  { name: 'Silicone grease', use: 'Case, caseback and crown gaskets only. It doesn’t belong in the movement.' },
+  { name: 'Epilame (e.g. Fixodrop)', use: 'Surface treatment that stops oil spreading. ETA specifies it after washing on the 2824-2’s keyless and date parts, so it’s part of a factory-standard service, though many hobbyists add it later.' },
 ]

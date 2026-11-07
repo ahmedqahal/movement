@@ -51,7 +51,7 @@ function RateHelper() {
 
   const band = (r) => {
     const a = Math.abs(r)
-    if (a <= 6) return { label: 'Chronometer-grade (within COSC ±6 s/day)', tone: 'good' }
+    if (r >= -4 && r <= 6) return { label: 'Chronometer-grade (within COSC −4 to +6 s/day)', tone: 'good' }
     if (a <= 12) return { label: 'Excellent for a mechanical watch', tone: 'good' }
     if (a <= 20) return { label: 'Good — normal for a healthy movement', tone: 'ok' }
     if (a <= 40) return { label: 'Acceptable; a regulation would tighten it', tone: 'warn' }
@@ -227,9 +227,10 @@ function AmplitudeBeat() {
   const b = num(be)
 
   const ampBand = (v) => {
-    if (v >= 270 && v <= 320) return { label: 'Healthy (270–320° dial-up, fully wound)', tone: 'good' }
+    if (v >= 270 && v <= 310) return { label: 'Healthy (270–310° dial-up, fully wound)', tone: 'good' }
+    if (v > 310 && v <= 330) return { label: 'Strong — fine, as long as the lift angle is set correctly', tone: 'ok' }
     if (v >= 250 && v < 270) return { label: 'A little low — keep an eye on it', tone: 'ok' }
-    if (v > 320) return { label: 'Too high — risk of rebanking/knocking; check the mainspring & escapement', tone: 'warn' }
+    if (v > 330) return { label: 'Too high — check the lift angle first, then risk of rebanking/knocking; check the mainspring & escapement', tone: 'warn' }
     return { label: 'Low — dried oil, wear, or a fault; it’s due a service', tone: 'bad' }
   }
   const beBand = (v) => {
@@ -273,7 +274,7 @@ function AmplitudeBeat() {
             </div>
           )}
           <div className="calc__spec-note">
-            The timegrapher derives amplitude from the lift angle, so it must match the movement (often 52°, but 6497 is 53°, some are 42–58°). A wrong lift angle gives a wrong amplitude.
+            The timegrapher derives amplitude from the lift angle, so it must match the movement (it varies by calibre: the ETA 2824-2 is 50° and the 6497 is 44°). A wrong lift angle gives a wrong amplitude.
           </div>
         </div>
       )}
@@ -288,15 +289,15 @@ function BatteryLookup() {
     const s = q.trim().toLowerCase()
     if (!s) return BATTERIES
     return BATTERIES.filter((b) =>
-      [b.code, b.iec, b.size, b.alt, b.chem].join(' ').toLowerCase().includes(s)
+      [b.code, b.iec, b.size, b.alt, b.chem, b.drain].join(' ').toLowerCase().includes(s)
     )
   }, [q])
 
   return (
-    <Calc wide title="Battery cross-reference" desc="Look up a watch cell by any code, cross-code, or size. Silver-oxide (SR, 1.55 V) unless the chemistry says lithium.">
+    <Calc wide title="Battery cross-reference" desc="Look up a watch cell by any code or size. W cells are high drain and SW cells low drain. Alkaline cells appear so you can identify them, but they are not equivalents.">
       <div className="calc__row">
         <Field label="Search a cell">
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. 377, SR626, LR44, 9.5 × 2.1…" />
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. 377, SR626, LR44, 9.5 × 2.05…" />
         </Field>
       </div>
       <div className="table-wrap">
@@ -307,13 +308,15 @@ function BatteryLookup() {
               <th>IEC / SR</th>
               <th>Size (mm)</th>
               <th>V</th>
+              <th>Drain</th>
+              <th>mAh</th>
               <th>Also called</th>
             </tr>
           </thead>
           <tbody>
             {rows.length === 0 ? (
               <tr>
-                <td colSpan="5" style={{ color: 'var(--text-faint)' }}>No cell matches “{q}”.</td>
+                <td colSpan="7" style={{ color: 'var(--text-faint)' }}>No cell matches “{q}”.</td>
               </tr>
             ) : (
               rows.map((b) => (
@@ -322,6 +325,8 @@ function BatteryLookup() {
                   <td>{b.iec}</td>
                   <td>{b.size}</td>
                   <td>{b.v}</td>
+                  <td>{b.drain}</td>
+                  <td>{b.mah}</td>
                   <td>{b.alt}</td>
                 </tr>
               ))
@@ -329,6 +334,29 @@ function BatteryLookup() {
           </tbody>
         </table>
       </div>
+    </Calc>
+  )
+}
+
+/* ---- 7 · Battery life estimate ---- */
+function BatteryLife() {
+  const [mah, setMah] = useState('28')
+  const [ua, setUa] = useState('1.5')
+  const m = num(mah)
+  const u = num(ua)
+  const months = m && u ? (m * 1000) / u / 730 : null
+
+  return (
+    <Calc title="Battery life estimate" desc="Cell capacity and the movement’s current draw give a rough life. Real life is shorter if a chronograph or alarm runs often, and a very low draw is capped by the cell’s own shelf life.">
+      <div className="calc__row">
+        <Field label="Cell capacity (mAh)" hint="from the battery table">
+          <input inputMode="decimal" value={mah} onChange={(e) => setMah(e.target.value)} />
+        </Field>
+        <Field label="Current draw (µA)" hint="often 0.3–2 µA for a healthy analogue movement">
+          <input inputMode="decimal" value={ua} onChange={(e) => setUa(e.target.value)} />
+        </Field>
+      </div>
+      {months != null && <Out value={months.toFixed(0)} unit={`months (about ${(months / 12).toFixed(1)} years)`} />}
     </Calc>
   )
 }
@@ -530,6 +558,7 @@ export default function Calculators() {
         <StrapLug />
         <AmplitudeBeat />
         <BatteryLookup />
+        <BatteryLife />
         <ScreenRuler />
       </div>
     </main>

@@ -7,12 +7,13 @@ function uid() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 7)
 }
 
+// A rough guide only: the real test is the calibre's own specification.
 function rateVerdict(r) {
   const a = Math.abs(r)
-  if (a <= 8) return { label: 'Excellent', tone: 'emerald' }
-  if (a <= 15) return { label: 'Good', tone: 'emerald' }
-  if (a <= 30) return { label: 'Acceptable', tone: 'brass' }
-  return { label: 'Needs regulating', tone: 'ruby' }
+  if (a <= 8) return { label: 'Close to zero', tone: 'emerald' }
+  if (a <= 15) return { label: 'Fairly close', tone: 'emerald' }
+  if (a <= 30) return { label: 'Check your calibre’s spec', tone: 'brass' }
+  return { label: 'Likely needs regulating', tone: 'ruby' }
 }
 
 export default function Timegrapher() {
@@ -156,7 +157,7 @@ export default function Timegrapher() {
         <h1>Time a watch by ear</h1>
         <p>
           Hold the watch against the phone’s microphone in a quiet room and Movement listens to the
-          ticking to measure its <b>rate</b> and <b>beat error</b> — the two numbers you regulate by.
+          ticking to measure its <b>rate</b>, with a rough reading of <b>beat error</b>. Rate is the number to trust: treat the phone’s beat error as a hint and confirm it on a timing machine.
           Everything is analysed live on your device; no audio is recorded or sent.
         </p>
       </div>
@@ -261,8 +262,8 @@ export default function Timegrapher() {
           <li>If the beat rate reads wildly wrong, pick the calibre’s real <b>bph</b> from the menu instead of Auto.</li>
         </ul>
         <p className="tg-honest">
-          <b>What this can and can’t do.</b> Rate and beat error from a phone mic are genuinely useful
-          for regulating. <b>Amplitude</b> isn’t shown: measuring it reliably needs the escapement’s
+          <b>What this can and can’t do.</b> Rate from a phone mic is genuinely useful for regulating, and
+          beat error is a rough guide only. <b>Amplitude</b> isn’t shown: measuring it reliably needs the escapement’s
           three sub-sounds cleanly separated and the movement’s lift angle, which a phone mic in a
           normal room can’t deliver — a wrong amplitude is worse than none. For amplitude and a full
           trace, a dedicated timegrapher or a contact-mic setup is still the tool. To interpret any

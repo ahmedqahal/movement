@@ -1,7 +1,7 @@
 # Movement — Watch Building & Repair
 
 An offline-first learning app for people who want to maintain and repair their own watches.
-83 lessons across 11 tracks, from a first strap change to a full mechanical service, with
+163 lessons across 14 tracks, from a first strap change to a full mechanical service, with
 interactive diagrams, illustrated plates, diagnostics, bench calculators and a practice log.
 
 ## Running it
@@ -21,13 +21,13 @@ npm test         # content integrity checks
 
 | | |
 | --- | --- |
-| **Learn** | 83 lessons / 11 tracks, incl. a guided *First Project* arc and flagship services for the ETA 6497, Seiko NH35 and ETA 2824 |
+| **Learn** | 163 lessons / 14 tracks, incl. a guided *First Project* arc, flagship services, a *Reading the Machine* timing track, casework, and a 37-lesson leather-strap course. Over 640 technical diagrams |
 | **Anatomy Explorer** | 9 interactive diagrams — the escapement, keyless works, chronograph, quartz stepper and calendar are animated |
 | **Illustrated Plates** | 17 painterly plates with clickable, accurate hotspot labels |
-| **Movement Guides** | 15 key calibres: specs, character, common faults, service notes |
-| **Diagnose** | 5 clickable decision trees that end in a diagnosis and a link to the fix |
-| **Test Yourself** | Per-lesson quizzes plus a shuffled random test and a *review weak spots* mode |
-| **Bench tools** | 6 calculators, printable cheat-sheets, glossary, reference guides |
+| **Movement Guides** | 85 calibres: specs, character, common faults, service notes, each marked as maker-sourced or typical |
+| **Diagnose** | 14 clickable decision trees that end in a diagnosis and a link to the fix |
+| **Test Yourself** | A quiz on every lesson, a shuffled random test, a *review weak spots* mode and spaced review |
+| **Bench tools** | Calculators, printable cheat-sheets, a 588-term glossary, 53 tool cards and 26 reference guides |
 | **Practice Log** | Private IndexedDB journal with photos, tags, stats, and JSON import/export |
 
 Everything is local: progress lives in `localStorage`, the practice log in IndexedDB, and the
@@ -39,13 +39,17 @@ Vite + React (JavaScript, no TypeScript), `react-router-dom` with `HashRouter`, 
 `vite-plugin-pwa`. There is no backend and no analytics.
 
 Content is data-driven — `src/data/*.js` holds lessons, anatomy, movements, flowcharts,
-illustrations, glossary, tools and reference articles. Adding a lesson means editing one array.
+illustrations, glossary, tools and reference articles. `lessons.js` is the base curriculum, and
+`enrich.js` layers on the topic files in `src/data/additions/`: new tracks and lessons, extra steps
+and extra quiz questions.
 
 Figures resolve through `src/components/StepFigures.jsx`:
 
 - `figure: 'oiling'` — a named figure (illustration, falling back to the original SVG)
 - `figure: 'plate:depthing'` — a technical plate
 - `figure: 'illus:nh35'` — an illustrated plate with interactive hotspots
+- `figure: 'strap:<id>'`, `figure: 'bench:<id>'` — technical drawings from `components/strap` and
+  `components/bench`, loaded lazily and enlarged on tap (see `components/strap/AUTHORING.md`)
 
 Diagrams that animate or respond to input stay as hand-authored SVG; everything static is a
 WebP illustration. Prompts used to generate the artwork are kept in `ILLUSTRATION-PROMPTS*.md`.
@@ -53,8 +57,8 @@ WebP illustration. Prompts used to generate the artwork are kept in `ILLUSTRATIO
 ## Content checks
 
 `npm test` runs `scripts/check-data.mjs`, which verifies that every figure reference resolves,
-every flowchart links to a lesson that exists, every illustration file is present, quiz answer
-indices are in range, and ids are unique. It runs automatically before every build, so broken
+every flowchart links to a lesson that exists, every illustration file is present, every lesson has
+a quiz with answer indices in range, and ids are unique. It runs automatically before every build, so broken
 content can't ship.
 
 ## Deploying

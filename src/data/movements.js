@@ -2,8 +2,9 @@
 // Grouped by `type`; each has quick specs plus its character, common faults,
 // service notes/quirks, and a "should I learn/build on this?" verdict.
 // `lessonId` links to a full service walkthrough where one exists.
+import { MORE_MOVEMENTS, LIFT_ANGLES } from './movements-extra.js'
 
-export const MOVEMENTS = [
+const BASE_MOVEMENTS = [
   /* ---------------- Automatic mechanical ---------------- */
   {
     id: 'nh35',
@@ -38,7 +39,7 @@ export const MOVEMENTS = [
     tags: ['vintage', 'workhorse'],
     specs: { Beat: '21,600 A/h (3 Hz)', Jewels: 21, Reserve: '~40 h', Size: '27.4 mm', Hacking: 'No', 'Hand-wind': 'No' },
     character: 'The engine of the legendary SKX007/009 and countless Seiko 5s. Superbly robust and the direct ancestor of the NH/4R family, but famously will neither hack nor hand-wind — you set it running by shaking it.',
-    faults: 'The usual aged-oil amplitude loss; no hacking means it’s never dead-accurate to set; day/date quick-change gears wear on hard-used examples.',
+    faults: 'The usual aged-oil amplitude loss; day/date quick-change gears wear on hard-used examples. No hacking or hand-winding is a design limit, not a fault.',
     service: 'Serviced exactly like an NH35 (same Magic Lever architecture). Many owners simply drop in an NH36 to gain hacking and hand-winding — a common, sensible upgrade.',
     verdict: 'Great to service and understand, but if you want hacking/hand-winding, swap to an NH36 rather than fight the 7S26’s limitations.',
   },
@@ -74,7 +75,7 @@ export const MOVEMENTS = [
     tags: ['premium'],
     specs: { Beat: '28,800 A/h (4 Hz)', Jewels: 24, Reserve: '~42 h', Size: '26 mm × 3.9 mm', Hacking: 'Yes', 'Hand-wind': 'Yes' },
     character: 'Miyota’s premium thin automatic — 4 Hz, hacking, hand-winding, and only 3.9 mm high, which is why microbrands love it for slim watches. A clear step up from the 8215.',
-    faults: 'A noticeably audible rotor is the common complaint; otherwise robust. Aged-oil symptoms as ever.',
+    faults: 'An audible rotor is a characteristic of Miyota automatics, not a defect, and a service won’t silence it. Worry only if it comes with gritty winding. Otherwise robust, with the usual aged-oil symptoms.',
     service: 'Standard 4 Hz automatic service and oiling; braking grease on the barrel wall. The thin construction rewards careful, clean handling.',
     verdict: 'A great “nicer than a Seiko 5, cheaper than Swiss” movement to build a slim watch around.',
   },
@@ -88,7 +89,7 @@ export const MOVEMENTS = [
     specs: { Beat: '28,800 A/h (4 Hz)', Jewels: 25, Reserve: '~38–42 h', Size: '25.6 mm × 4.6 mm', Hacking: 'Yes', 'Hand-wind': 'Yes' },
     character: 'The Swiss industry standard workhorse — three-hand + date, hacking, hand-winding, bidirectional winding through a reverser, and an Etachron regulator that makes it a joy to regulate. Sold in grades (Standard, Elaboré, Top, Chronomètre) that differ in finishing and adjustment.',
     faults: 'Reverser wheels can get sticky and hurt winding efficiency; the Etachron studs get knocked out of beat by heavy-handed work; aged-oil amplitude loss.',
-    service: 'A proper Swiss service: 9010 on fast pivots and cap jewels, HP-1300 on the barrel arbor, reverser and keyless, 9415 on the escapement, braking grease on the barrel wall. Learn the Etachron regulator and beat adjuster.',
+    service: 'A proper Swiss service: 9010 on fast pivots and cap jewels, HP-1300 on the barrel arbor and keyless, 9415 on the escapement, braking grease on the barrel wall. ETA marks the two reversing wheels “do not wash”: if they’re sticky, fit new pre-lubricated ones. Learn the Etachron regulator and beat adjuster.',
     verdict: 'The essential Swiss automatic to master — once you can service a 2824 cleanly, most Swiss three-handers follow.',
   },
   {
@@ -121,7 +122,7 @@ export const MOVEMENTS = [
     maker: 'ETA (Swatch Group)',
     type: 'Automatic',
     tags: ['swiss', 'chronograph'],
-    specs: { Beat: '28,800 A/h (4 Hz)', Jewels: 25, Reserve: '~44 h', Size: '30 mm × 7.9 mm', Hacking: 'Yes', 'Hand-wind': 'Yes' },
+    specs: { Beat: '28,800 A/h (4 Hz)', Jewels: 25, Reserve: '48 h min, 54 h typical', Size: '30 mm × 7.9 mm', Hacking: 'Yes', 'Hand-wind': 'Yes' },
     character: 'The workhorse automatic chronograph — a cam-switched (not column-wheel) design that’s robust, serviceable, and everywhere, usually as a tri-compax day-date. You can feel its big unidirectional rotor wind. The default answer to “affordable mechanical chronograph”.',
     faults: 'Chronograph-specific wear: the cam and levers, the vertical/lateral clutch, and worn hammers that stop the counters zeroing cleanly.',
     service: 'A big step up in complexity — service the base like a 2824, then the chronograph works on top (see the Chronograph track). Cam and clutch surfaces need the right greases; hammers and heart cams must reset to zero.',
@@ -192,4 +193,9 @@ export const MOVEMENTS = [
   },
 ]
 
-export const MOVEMENT_TYPES = ['Automatic', 'Manual', 'Quartz']
+export const MOVEMENTS = [
+  ...BASE_MOVEMENTS.map((m) => (LIFT_ANGLES[m.id] ? { ...m, specs: { ...m.specs, 'Lift angle': LIFT_ANGLES[m.id] } } : m)),
+  ...MORE_MOVEMENTS,
+]
+
+export const MOVEMENT_TYPES = ['Automatic', 'Manual', 'Quartz', 'Solar & kinetic', 'Other electronic']

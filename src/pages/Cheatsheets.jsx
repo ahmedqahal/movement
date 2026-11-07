@@ -40,8 +40,8 @@ function Sheet({ title, note, table }) {
 
 export default function Cheatsheets() {
   const batteryTable = {
-    headers: ['Code', 'IEC / SR', 'Size (mm)', 'V', 'Also called'],
-    rows: BATTERIES.map((b) => [b.code, b.iec, b.size, b.v, b.alt]),
+    headers: ['Code', 'IEC / SR', 'Size (mm)', 'V', 'Drain', 'mAh', 'Also called'],
+    rows: BATTERIES.map((b) => [b.code, b.iec, b.size, b.v, b.drain, b.mah, b.alt]),
   }
 
   return (

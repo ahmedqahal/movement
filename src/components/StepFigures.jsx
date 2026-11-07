@@ -9,6 +9,7 @@ import asset from '../lib/asset.js'
 // The strap-making diagrams are a large set used by one track only, so they
 // load on demand.
 const StrapFigure = lazy(() => import('./strap/index.jsx'))
+const BenchFigure = lazy(() => import('./bench/index.jsx'))
 
 const C = {
   brass: '#d0a84f',
@@ -482,9 +483,9 @@ const FIG_IMAGES = {
   partsbench: '/illustrations/fig-parts.webp',
 }
 
-// Strap diagrams are dense technical drawings: tapping one opens it full
+// Strap and bench diagrams are dense technical drawings: tapping one opens it full
 // screen (pannable on a portrait phone, full width in landscape).
-function ZoomableStrap({ id }) {
+function ZoomableFigure({ Figure, id }) {
   const [open, setOpen] = useState(false)
   useEffect(() => {
     if (!open) return
@@ -501,7 +502,7 @@ function ZoomableStrap({ id }) {
     <>
       <button type="button" className="fig-zoom" onClick={() => setOpen(true)} aria-label="Enlarge diagram">
         <Suspense fallback={<div className="fig-loading" />}>
-          <StrapFigure id={id} />
+          <Figure id={id} />
         </Suspense>
         <span className="fig-zoom__hint">Tap to enlarge</span>
       </button>
@@ -512,7 +513,7 @@ function ZoomableStrap({ id }) {
           </button>
           <div className="fig-lightbox__art" onClick={(e) => e.stopPropagation()}>
             <Suspense fallback={null}>
-              <StrapFigure id={id} />
+              <Figure id={id} />
             </Suspense>
           </div>
         </div>
@@ -523,7 +524,9 @@ function ZoomableStrap({ id }) {
 
 export default function StepFigure({ name }) {
   // `strap:<id>` references a strap-making diagram from components/strap
-  if (name && name.startsWith('strap:')) return <ZoomableStrap id={name.slice(6)} />
+  if (name && name.startsWith('strap:')) return <ZoomableFigure Figure={StrapFigure} id={name.slice(6)} />
+  // `bench:<id>` references a bench diagram from components/bench
+  if (name && name.startsWith('bench:')) return <ZoomableFigure Figure={BenchFigure} id={name.slice(6)} />
   // `plate:<id>` references a technical plate from components/plates
   if (name && name.startsWith('plate:')) {
     const plate = PLATES.find((p) => p.id === name.slice(6))

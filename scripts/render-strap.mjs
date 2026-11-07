@@ -4,7 +4,7 @@
 // with react-dom/server, rasterises with sharp, and also writes contact
 // sheets (several figures per image) so a whole lesson can be reviewed at once.
 //
-//   node scripts/render-strap.mjs [idPrefix…] [--out dir] [--per 6] [--file figs-x.jsx]
+//   node scripts/render-strap.mjs [idPrefix…] [--out dir] [--per 6] [--file figs-x.jsx] [--dir bench]
 // --file renders one figure file on its own (so a broken file elsewhere
 // can't stop you), instead of the whole registry in index.jsx.
 import fs from 'node:fs'
@@ -26,6 +26,7 @@ const flag = (name, def) => {
 const out = path.resolve(flag('--out', path.join(os.tmpdir(), 'strap-png')))
 const per = Number(flag('--per', 6))
 const only = flag('--file', null)
+const dir = flag('--dir', 'strap')
 const prefixes = args
 
 fs.mkdirSync(out, { recursive: true })
@@ -38,7 +39,7 @@ fs.writeFileSync(
   entry,
   `import { renderToStaticMarkup } from 'react-dom/server'
 import { createElement } from 'react'
-import { FIGS } from ${JSON.stringify(path.join(root, 'src/components/strap', only || 'index.jsx'))}
+import { FIGS } from ${JSON.stringify(path.join(root, 'src/components', dir, only || 'index.jsx'))}
 export const ids = Object.keys(FIGS)
 export const render = (id) => renderToStaticMarkup(createElement(FIGS[id]))
 `

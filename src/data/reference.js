@@ -1,8 +1,9 @@
 // In-depth reference articles. Each article has sections; a section may
 // carry a `table` { headers, rows } that renders as a data table.
 import { BATTERIES } from './batteries.js'
+import { MORE_REFERENCE } from './reference-extra.js'
 
-export const REFERENCE = [
+const BASE_REFERENCE = [
   {
     id: 'movement-families',
     title: 'Movement families & identification',
@@ -39,7 +40,7 @@ export const REFERENCE = [
       { heading: 'Ratings measure pressure, not depth', body: 'A rating in metres or ATM comes from a static pressure test, not real-world diving. Movement, temperature changes, and ageing gaskets all reduce real-world resistance, so treat the numbers conservatively.' },
       {
         heading: 'What each rating allows',
-        body: 'A practical guide (be conservative, especially on older watches):',
+        body: 'A practical guide, based on trade convention: ISO 22810 leaves suitability to each maker, so be conservative, especially on older watches.',
         table: {
           headers: ['Rating', 'Rain / splash', 'Shower', 'Swim', 'Dive'],
           rows: [
@@ -72,13 +73,14 @@ export const REFERENCE = [
             ['Centre wheel, barrel arbor & motion work', 'Heavier oil', 'HP-1300 / D5'],
             ['Pallet stones (escapement)', 'Pallet oil/grease', '9415 / 941'],
             ['Cap jewels & Incabloc end-stones', 'Light oil (automatic oiler)', '9010'],
-            ['Keyless & sliding setting parts', 'Grease', '8301'],
-            ['Mainspring & barrel wall', 'Mainspring / braking grease', '8200'],
+            ['Keyless & sliding setting parts', 'Grease on teeth, heavier oil on the stem', '9504 / HP-1300'],
+            ['Mainspring & barrel wall (manual wind)', 'Mainspring grease', '8200'],
+            ['Barrel wall (automatic)', 'Braking grease, so the bridle can slip', '8217 / 8213 / P125'],
             ['Roller (impulse) jewel & hairspring', 'None — never oiled', '—'],
           ],
         },
       },
-      { heading: 'Technique', body: 'Charge the oiler by dipping its tip in a pool of oil (dip fast for more, slow for less), then approach the pivot and its oil sink at a near right angle. Aim for a clear, distinct ring of oil around the pivot — about a third of the sink — never a puddle, and none on the flat around the sink. Use a separate oiler per grade, and never oil straight from the bottle (decant a little into a cup).' },
+      { heading: 'Technique', body: 'Charge the oiler by dipping its tip in a pool of oil (dip fast for more, slow for less), then approach the pivot and its oil sink at a near right angle. Aim for a small, clean bead around the pivot that stays inside the sink. No published rule sets the size for an open jewel, so judge it by the bead staying put. Use a separate oiler per grade, and never oil straight from the bottle (decant a little into a cup).' },
       { heading: 'If you smear it', body: 'Don’t try to patch a smeared jewel with Rodico — the oil keeps creeping over the next couple of weeks. Degrease the part properly and re-oil it. Shortcuts here always come back to haunt the rate.' },
       { heading: 'What to oil — and what not to', body: 'Oil the mainspring and barrel wall, the keyless works, the train and escape-wheel pivots, the cap/hole jewels, and the escapement’s pallet stones and escape-wheel teeth. Two things are famously left dry: the roller (impulse) jewel and the hairspring — a trace of oil on either wrecks timekeeping.' },
     ],
@@ -107,12 +109,16 @@ export const REFERENCE = [
         heading: 'Common equivalents',
         body: 'Watch cells by code, size and cross-reference (silver-oxide unless noted). Match the size and chemistry exactly, and look these up quickly in the bench Calculators tab:',
         table: {
-          headers: ['Code', 'IEC / SR', 'Size (mm)', 'V', 'Also called'],
-          rows: BATTERIES.map((b) => [b.code, b.iec, b.size, b.v, b.alt]),
+          headers: ['Code', 'IEC / SR', 'Size (mm)', 'V', 'Drain', 'mAh', 'Also called'],
+          rows: BATTERIES.map((b) => [b.code, b.iec, b.size, b.v, b.drain, b.mah, b.alt]),
         },
       },
-      { heading: 'Silver-oxide vs alkaline', body: 'Alkaline (LR) equivalents exist and are cheaper, but their voltage sags as they drain, which can affect timekeeping and the low-battery indicator. For watches, choose silver-oxide.' },
-      { heading: 'Handling & disposal', body: 'Handle new cells by the edge (fingerprints cause self-discharge and corrosion) and recycle old ones — button cells shouldn’t go in general waste.' },
+      { heading: 'Reading the code', body: 'The first letter of an IEC name gives the chemistry: S is silver oxide, L alkaline, C lithium. R means round. The digits give the diameter in whole millimetres and the height in tenths, so SR516 is 5.8 × 1.6 mm. A W suffix is high drain, for alarms, lamps and multi-function watches. SW is low drain, for ordinary analogue watches. Some calibres name one or the other, so check the movement’s sheet.' },
+      { heading: 'Why capacity is a range', body: 'Makers rate the same size under different loads and cut-off voltages, so mAh figures only compare fairly under one test. The table shows the spread between makers’ lists. Treat it as a guide, not a specification.' },
+      { heading: 'Silver-oxide vs alkaline', body: 'Alkaline (LR) cells share sizes with silver-oxide cells but they are not equivalents. Silver oxide holds about 1.55 V until a sudden fall near the end, while alkaline sags steadily from 1.5 V. A movement that stops near 1.3 V gets far less life from alkaline, and its low-battery warning can misbehave. For watches, choose silver-oxide.' },
+      { heading: 'Rechargeable cells', body: 'Solar and kinetic watches use a rechargeable cell, such as an MT920 or a Seiko 3023-series unit, and never a primary cell. Fitting a primary cell in a charging circuit can make it leak or burst. Fit only the part number the calibre sheet names, because some look almost identical: the Seiko 5M62 unit 3023 44Z is easily mistaken for the 5M4 capacitor.' },
+      { heading: 'Handling & disposal', body: 'Handle new cells by the edge, because fingerprints cause self-discharge and corrosion. Don’t put button or lithium cells in general waste or household recycling. Take them to a battery recycler or retailer take-back, and tape the terminals of lithium cells first, because a damaged or touching cell can spark.' },
+      { heading: 'If a cell is swallowed', body: 'Treat it as an emergency, even if the person seems fine. Serious burns can begin within 2 hours if a cell lodges in the oesophagus. Go to an emergency department at once and do not make the person vomit. In the US, the National Battery Ingestion Hotline is 1-800-498-8666. Keep new and used cells away from children, and clear them from the bench when you finish.' },
     ],
   },
   {
@@ -161,13 +167,13 @@ export const REFERENCE = [
       { heading: 'Why 32,768 Hz', body: '32,768 is 2¹⁵. A chain of fifteen digital “divide-by-two” stages turns it into exactly one pulse per second with simple, very low-power logic — which is why almost every watch crystal is cut to that frequency.' },
       {
         heading: 'Testing with a multimeter',
-        body: 'Four quick measurements localise almost any quartz fault:',
+        body: 'Four quick checks narrow down most quartz faults. A plain multimeter is only a rough guide, so use the maker’s limits where you have them:',
         table: {
           headers: ['Test', 'Healthy', 'Fault'],
           rows: [
-            ['Cell voltage (in circuit)', '≈ 1.55 V', '< 1.5 V → tired / flat'],
-            ['Coil resistance', '≈ 1.5–3 kΩ', 'Open (OL) → broken coil'],
-            ['Average current', '< ~1 µA', 'Tens of µA → short / IC fault'],
+            ['Cell voltage (in circuit)', '≈ 1.45–1.6 V', 'Under about 1.40 V → end of life'],
+            ['Coil resistance', '≈ 1–3 kΩ, by calibre', 'Open (OL) → broken coil; far lower → shorted turns'],
+            ['Average current', '≈ 0.3–2 µA, by calibre', 'Tens of µA → short / IC fault'],
             ['Seconds hand', '1-second steps', '4-second jump → low battery'],
           ],
         },
@@ -187,7 +193,7 @@ export const REFERENCE = [
         },
       },
       { heading: 'Repair vs replace', body: 'Because modules are inexpensive and mass-produced, component-level quartz repair rarely pays. The skilled work is diagnosis (battery vs contacts vs module) and the hand-and-dial work when swapping a module — not soldering electronics.' },
-      { heading: 'A note on sources', body: 'The six reference books behind this app are all about mechanical watches. This quartz material is written from general electronics and watch-repair knowledge and cross-checked for accuracy — not drawn from those books. A quartz-specific service manual (Ronda, ISA, or Miyota tech sheets) would deepen it further.' },
+      { heading: 'A note on sources', body: 'The reference books behind this app are all about mechanical watches, so the quartz material draws on makers’ technical sheets from Ronda, ETA, ISA, Miyota, Seiko and Citizen, and on Witschi’s testing guides. Limits vary by calibre, so the sheet for your movement always wins.' },
     ],
   },
   {
@@ -208,7 +214,7 @@ export const REFERENCE = [
             ['Frequency', '18,000 A/h (2.5 Hz)'],
             ['Jewels', '17'],
             ['Power reserve', '~46–53 h'],
-            ['Lift angle', '53°'],
+            ['Lift angle', '44°'],
             ['Winding', 'Manual'],
             ['Sub-seconds', '9 o’clock (6498: 6 o’clock)'],
             ['Shock protection', 'Incabloc'],
@@ -231,7 +237,7 @@ export const REFERENCE = [
           ],
         },
       },
-      { heading: 'Regulation targets', body: 'Fully wound, dial-up: amplitude 270–310°, beat error under ~0.5 ms, and a small daily gain. Because the 6497 is a display-back favourite, it rewards dressing the bridges and bluing the screws.' },
+      { heading: 'Regulation targets', body: 'Fully wound, dial-up: aim for amplitude 270–310° (Witschi’s service tolerance is 250–330° flat), beat error under ~0.5 ms, and a small daily gain. Because the 6497 is a display-back favourite, it rewards dressing the bridges and bluing the screws.' },
     ],
   },
   {
@@ -250,25 +256,32 @@ export const REFERENCE = [
           rows: [
             ['Standard mechanical', '−10 to +20 s/day (typical)'],
             ['COSC chronometer', '−4 to +6 s/day (avg)'],
-            ['METAS Master Chronometer', '0 to +5 s/day'],
+            ['METAS Master Chronometer', '0 to +5 s/day (over 26 mm); +6 and +7 on smaller movements'],
             ['Quartz (standard)', '±15–30 s/month'],
           ],
         },
       },
-      { heading: 'Amplitude & beat error', body: 'Beyond rate, amplitude (how far the balance swings, ~270–310° healthy) and beat error (swing symmetry, lower is better) tell you the movement’s health — a timegrapher shows all three.' },
+      { heading: 'Amplitude & beat error', body: 'Beyond rate, amplitude (how far the balance swings, aim for 270–310°, with a service tolerance of 250–330° flat) and beat error (swing symmetry, lower is better) tell you the movement’s health — a timegrapher shows all three.' },
     ],
   },
   {
     id: 'sources',
     title: 'Sources & further reading',
     icon: 'book',
-    summary: 'The classic horology texts this app’s content draws on.',
+    summary: 'The classic texts and modern documents this app draws on, and how to read its confidence labels.',
     sections: [
       { heading: 'How this app was written', body: 'Lessons and references here are written in plain language but checked against classic watchmaking texts for accuracy — especially the escapement, balance, adjusting, and cleaning/oiling material. The books below are worth seeking out as you go deeper.' },
       { heading: 'Harold C. Kelly — A Practical Course in Horology (1944)', body: 'A superb textbook on the lever escapement, the balance and balance spring, jeweling, staff-making, pivoting, and the three branches of adjusting (position, isochronism, temperature). The source for much of the escapement and adjusting detail here.' },
       { heading: 'Joseph Bulova School of Watch Making', body: 'The famous training course, strong on practical bench technique — balance truing, staffing, and hands-on repair — with excellent illustrations.' },
       { heading: 'Parts & movement references', body: 'The Waltham Watch Company parts catalogue (1911) and the Ébauches SA dictionary are period references for identifying vintage movements and parts.' },
       { heading: 'Interactive online reference', body: 'Bartosz Ciechanowski’s “Mechanical Watch” (ciechanow.ski/mechanical-watch) is an outstanding interactive explainer — its precise account of the lever escapement, the going train, keyless and automatic winding informed the to-scale escapement diagram here, including its synchronised beat.' },
+      { heading: 'Makers’ technical documents', body: 'Servicing, oiling and quartz figures come from makers’ own documents where we could read them: ETA’s CT 2824-2 (revision 25, 6 October 2022) and its quartz sheets for calibres such as the 955 and 251.264; Ronda, ISA, Miyota, Citizen, Epson and Seiko guides, including Seiko’s service bulletin SNO.16; Moebius sheets for 9010, 9020 and 8217; and the Elma Super Elite manual. We use the facts from ETA, Witschi and Soprod documents in our own words, and never their tables or drawings.' },
+      { heading: 'Standards and certifiers', body: 'Standards figures come from ISO’s sample pages for ISO 22810, 6425, 764 and 3160-1, METAS-N001 v1.2 and COSC’s FAQ. We did not buy the full standards, so anything beyond those pages is either left out or marked as second-hand. Gold terms come from the US FTC Guides (16 CFR 23.3), and Swiss Made from the Swiss IPI and the FH guide.' },
+      { heading: 'Training material', body: 'Witschi’s training course and its 2025 guide to testing electronic watches supply most of the timing and quartz test method. BHI’s Technician Grade course gives the tool list. AWCI’s Standards and Practices gives the cap-jewel oil standard. Published syllabi from WOSTEP, BHI, AWCI and North Seattle shaped the order of topics.' },
+      { heading: 'Reference sites', body: 'Caliber Corner and WatchGuy for calibre data and lift angles. Watchscanning for timing and magnetism guides. Vintage Watch Straps for mainsprings and Swiss marks. Horopedia for crystals and gaskets. Plus9Time, Chronomaddox, Bob’s Watches and Antique Pocket Watch for dating. The Health Physics Society and the US EPA for radium. Where Wikipedia was the only source we could reach, as for most of the timeline, we say so.' },
+      { heading: 'Forum material', body: 'Forums are good at showing what goes wrong at the bench, so we use them for that and label it “forum practice” or “forum experience”. WatchRepairTalk and Watchuseek could be read only through search summaries, so nothing is quoted from them. Omega Forums threads were read directly. No Reddit material was used. Forum posts can suggest a fault, but they don’t supply numbers unless the label says so.' },
+      { heading: 'How to read the labels', body: '“Maker’s sheet” and “standard’s own text” mean the document itself was read. “One source” means a single page, not independently confirmed. “Supplier listing” is fine for products and weak on technique. “Typical” means a community listing such as a lift-angle table. “Forum practice” is opinion. “Our judgement” or “our reasoning” is this app’s own thinking. Where sources conflict we give both values, or neither. A calibre’s own service sheet outranks everything here.' },
+      { heading: 'What we left out', body: 'Figures we could not confirm stay out, or appear only marked as unconfirmed. Examples are polishing grades, crown-tube threads, ISO 1413’s numbers, a safe dial solvent, Microstella and Gyromax step sizes, and any claim about current parts stock. If you know a good primary source for one of these, it is worth more than anything a forum can offer.' },
       { heading: 'A note on accuracy', body: 'Where classic and modern practice differ (for example, old cleaning methods used cyanide, long since replaced by modern cleaning solutions), this app follows current safe practice while keeping the underlying principles the classics teach so well.' },
     ],
   },
@@ -287,6 +300,10 @@ export const REFERENCE = [
     ],
   },
 ]
+
+// Sources and the disclaimer stay last, after the newer articles.
+const closing = BASE_REFERENCE.filter((a) => a.id === 'sources' || a.id === 'disclaimer')
+export const REFERENCE = [...BASE_REFERENCE.filter((a) => !closing.includes(a)), ...MORE_REFERENCE, ...closing]
 
 export function getArticle(id) {
   return REFERENCE.find((a) => a.id === id)
