@@ -27,7 +27,7 @@ Start by changing a strap. Finish by stripping, cleaning, oiling and regulating 
 
 WHAT'S INSIDE
 
-• 163 lessons across 14 tracks, from everyday care to full servicing, with a technical diagram on every step (over 1,500 in all)
+• 163 lessons across 14 tracks, from everyday care to full servicing, with a technical diagram on every step (over 1,100 in all)
 • A guided "First Project" path if you don't know where to begin
 • Interactive diagrams you can explore — watch the escapement tick, toggle the keyless works between winding and setting, run a chronograph's start, stop and reset
 • 17 illustrated plates with tappable labels on every part
