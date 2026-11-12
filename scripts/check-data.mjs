@@ -32,6 +32,10 @@ const figKeys = new Set([
   ...[...stepSrc.matchAll(/^\s{2}(\w+):\s*'\/illustrations/gm)].map((m) => m[1]),
   ...[...stepSrc.matchAll(/^\s{2}(\w+):\s*[A-Z]\w+,/gm)].map((m) => m[1]),
 ])
+import { benchManifest } from './bench-manifest.mjs'
+import { FIGMAPS } from '../src/data/enrich.js'
+benchManifest()
+
 // bench diagrams: registry entries in components/bench/figs-*.jsx
 const benchDir = path.join(root, 'src/components/bench')
 const benchIds = new Set(
@@ -75,6 +79,19 @@ for (const l of lessons) {
       if (!strapIds.has(f.slice(6))) fail(`${l.id}: unknown strap diagram "${f}"`)
     } else if (!figKeys.has(f)) {
       fail(`${l.id}: unknown figure key "${f}"`)
+    }
+  }
+}
+
+// 2a — every diagram map entry must land on a real step that has no figure of its own
+for (const map of FIGMAPS) {
+  for (const [id, steps] of Object.entries(map)) {
+    const l = lessons.find((x) => x.id === id)
+    if (!l) { fail(`diagram map: unknown lesson "${id}"`); continue }
+    for (const [title, v] of Object.entries(steps)) {
+      const s = l.steps.find((x) => x.title === title)
+      if (!s) fail(`diagram map: ${id} has no step titled "${title}"`)
+      else if (s.figure !== v.figure) fail(`diagram map: ${id} step "${title}" already has its own figure`)
     }
   }
 }

@@ -213,7 +213,7 @@ function Screwdriver({ len = 80, blade = 7 }) {
     <g>
       <path d={`M${-blade / 2} 0 L${blade / 2} 0 L2 -12 L-2 -12 Z`} fill="url(#sk-steel)" />
       <rect x="-2" y="-30" width="4" height="18" fill="url(#sk-steelH)" />
-      <rect x="-6" y={-len} width="12" height={len - 30} rx="2" fill="url(#qk-knurl)" stroke="#55646e" strokeWidth="0.6" />
+      <rect x="-6" y={-len} width="12" height={Math.max(0, len - 30)} rx="2" fill="url(#qk-knurl)" stroke="#55646e" strokeWidth="0.6" />
     </g>
   )
 }
@@ -221,7 +221,7 @@ function Oiler({ len = 70, drop = 3 }) {
   return (
     <g>
       <line x1="0" y1="0" x2="0" y2="-26" stroke={C.steel} strokeWidth="1.3" />
-      <rect x="-2.6" y={-len} width="5.2" height={len - 26} rx="2" fill="#7c8d97" />
+      <rect x="-2.6" y={-len} width="5.2" height={Math.max(0, len - 26)} rx="2" fill="#7c8d97" />
       {drop > 0 && <circle cx="0" cy="1" r={drop} fill={M.oil} />}
     </g>
   )
@@ -230,7 +230,7 @@ function CaseKnife({ len = 92 }) {
   return (
     <g>
       <path d="M-5 0 L5 0 L6 -40 L-6 -40 Z" fill="url(#sk-steelH)" stroke="#4e5f6a" strokeWidth="0.6" />
-      <rect x="-8" y={-len} width="16" height={len - 40} rx="3" fill="url(#sk-wood)" />
+      <rect x="-8" y={-len} width="16" height={Math.max(0, len - 40)} rx="3" fill="url(#sk-wood)" />
     </g>
   )
 }
@@ -238,7 +238,7 @@ function Pusher({ d = 3, len = 70, k = 'steel' }) {
   return (
     <g>
       <rect x={-d / 2} y="-28" width={d} height="28" fill={k === 'steel' ? 'url(#sk-steelH)' : C.brass} />
-      <rect x="-5" y={-len} width="10" height={len - 28} rx="2" fill="url(#qk-knurl)" stroke="#55646e" strokeWidth="0.6" />
+      <rect x="-5" y={-len} width="10" height={Math.max(0, len - 28)} rx="2" fill="url(#qk-knurl)" stroke="#55646e" strokeWidth="0.6" />
     </g>
   )
 }

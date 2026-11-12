@@ -1,0 +1,62 @@
+// Diagrams for existing lesson steps, keyed by lesson id then step title.
+export const FIGMAP = {
+  'svc-overview': {
+    'Why watches need servicing': { figure: 'bench:sa-why-service', caption: 'Dried oil, dirt and pivot wear drag amplitude down over the years, and a service resets it.' },
+    'Set realistic expectations': { figure: 'bench:sa-expectations', caption: 'Give it a weekend, and learn on a cheap movement whose spares you can buy.' },
+    'Protect your eyes and your drains': { figure: 'bench:sa-safety', caption: 'Eye protection on, and used fluids go in a closed, labelled jar, never down a drain.' },
+    'Document as you go': { figure: 'bench:sa-photos', caption: 'A photo at each stage is the map for lining up three pivots under one bridge.' },
+    'Record the watch before you touch it': { figure: 'bench:sa-intake', caption: 'The intake card: condition, complaint and readings now, the same readings at the end.' },
+  },
+  'svc-teardown': {
+    'Power down and remove dial-side parts': { figure: 'bench:sa-letdown', caption: 'Let the spring down at the click, take the ratchet wheel off, then clear the dial side top down.' },
+    'Remove the automatic works': { figure: 'bench:sa-auto-off', caption: 'The rotor, then the winding module: the top layer comes off before the movement proper.' },
+    'Test the train before it comes apart': { figure: 'bench:sa-train-test', caption: 'A free train coasts to a stop; feel each wheel’s endshake and side-shake while the bridge is on.' },
+    'If a bridge won’t lift': { figure: 'bench:sa-bridge-stuck', caption: 'Look for a screw still in, lever only at the slot, and keep each bridge’s screws together.' },
+    'Clear the mainplate': { figure: 'bench:sa-bare-plate', caption: 'The cannon pinion comes off last, leaving a bare plate with only jewels and holes.' },
+  },
+  'svc-clean': {
+    'Sort before cleaning': { figure: 'bench:sa-sort', caption: 'The balance and shock springs stay apart, and screws stay grouped by bridge.' },
+    'Look for parts that must not be washed': { figure: 'bench:sa-no-wash', caption: 'Check the sheet for no-wash parts and set them aside in a covered dish.' },
+    'Peg the jewels': { figure: 'bench:sa-peg', caption: 'A sharpened pegwood point and about a half turn lifts the dried oil the machine missed.' },
+    'Clean the balance separately': { figure: 'bench:sa-balance-dip', caption: 'Dip the balance and cock by the cock hole, then puff gently so the coils stay even.' },
+    'Handle dried parts cleanly': { figure: 'bench:sa-handle-clean', caption: 'Clean tweezers and finger cots only: one fingerprint puts the oils back.' },
+  },
+  'svc-oil': {
+    'Match oil to job': { figure: 'bench:sa-oil-match', caption: 'Each lubricant and where it goes, and the two places that get nothing at all.' },
+    'Grease the barrel & keyless': { figure: 'bench:sa-grease', caption: 'Braking grease on an automatic barrel wall, a little on the spring, and grease on the keyless parts.' },
+  },
+  'svc-shock': {
+    'Release the Incabloc spring': { figure: 'bench:sa-inca-release', caption: 'Tease each prong in turn, hinge the spring back no more than about 80°, and park Rodico behind it.' },
+    'Release a Kif spring': { figure: 'bench:sa-kif-release', caption: 'Press lightly and twist until the wings line up with the cut-outs.' },
+    'Lift & clean the jewels': { figure: 'bench:sa-jewel-lift', caption: 'Lift the chaton on a Rodico point, not tweezers, then soak it with the end-stone.' },
+    'Oil the cap jewel & refit': { figure: 'bench:sa-cap-oil-refit', caption: 'A small drop of 9010 on the end-stone, chaton back, spring home, then check endshake.' },
+    'Check the setting before you move on': { figure: 'bench:sa-shock-check', caption: 'A round, centred ring, a spring that can’t swing out, and a little endshake.' },
+  },
+  'svc-auto': {
+    'Diagnose winding efficiency': { figure: 'bench:sa-auto-diagnose', caption: 'A watch that runs down overnight usually loses power on the winding side, not in the train.' },
+    'Check the rotor and its bearing': { figure: 'bench:sa-rotor-check', caption: 'A good rotor spins freely with no play; a worn bearing lets it touch the caseback.' },
+    'Replace a worn rotor bearing': { figure: 'bench:sa-rotor-bearing', caption: 'Swap the bearing unit, or the whole rotor where the bearing is part of it, and seat it square.' },
+    'Read the sheet before you wash a reverser': { figure: 'bench:sa-reverser-sheet', caption: 'The maker’s rule comes first; either way, each wheel must lock one way and run free the other.' },
+    'Clean the reversers — but don’t strip them': { figure: 'bench:sa-reverser-unit', caption: 'A reverser is a one-way clutch with pawls inside, cleaned whole and never stripped.' },
+    'Lubricate reversers correctly': { figure: 'bench:sa-reverser-dip', caption: 'Dip the clean wheel, let the carrier evaporate, and never use ordinary oil or grease.' },
+    'Prove it before casing': { figure: 'bench:sa-auto-prove', caption: 'Hand spins show the barrel taking up power; a day of wear shows the reserve building.' },
+  },
+  'svc-reassemble': {
+    'Rebuild the mainplate up': { figure: 'bench:sa-rebuild-up', caption: 'Keyless and motion works first, then the barrel and its bridge, oiled as each goes in.' },
+    'Check endshake before the fork goes in': { figure: 'bench:sa-endshake', caption: 'A flat bridge leaves every pivot a hair of endshake; a crooked one pinches it.' },
+    'Fit the pallet fork, then power-check': { figure: 'bench:sa-fork-snap', caption: 'With a little power on, the fork should snap crisply between the banking pins.' },
+    'Install the balance last': { figure: 'bench:sa-balance-in', caption: 'Lower balance and cock so the hairspring sits flat and the impulse jewel drops between the horns.' },
+    'If the balance won’t start': { figure: 'bench:sa-balance-nostart', caption: 'Work down the list, starting with an impulse jewel caught outside the fork horns.' },
+    'Refit dial and hands': { figure: 'bench:sa-dial-hands', caption: 'Turn the hands through 12:00: both must point at 12 together.' },
+  },
+  'svc-test': {
+    'Demagnetise and measure': { figure: 'bench:sa-demag-measure', caption: 'Demagnetise, then read rate, amplitude and beat error; healthy is roughly 270–310° dial up.' },
+    'Check all positions': { figure: 'bench:sa-positions-check', caption: 'Readings that agree across positions point to a clean, well-oiled movement.' },
+    'Time it in six positions': { figure: 'bench:sa-six-positions', caption: 'The delta between the best and worst position is the number that describes the movement.' },
+    'Check isochronism': { figure: 'bench:sa-isochronism', caption: 'The regulator can shift the rate line but can’t flatten its slope.' },
+    'Check the power reserve': { figure: 'bench:sa-power-reserve', caption: 'Run it out dial up and compare with the maker’s minimum and typical figures.' },
+    'Set the beat, then the rate': { figure: 'bench:sa-beat-then-rate', caption: 'Correct the beat at the stud first, then regulate to a small daily gain of 0 to +10 s/day.' },
+    'Test every function': { figure: 'bench:sa-functions', caption: 'Detents, hacking, date, self-winding and reserve, all before the case goes on.' },
+    'Run it on test, then case & seal': { figure: 'bench:sa-case-seal', caption: 'Let it hold its readings for 24–48 hours, then case, re-gasket, close and pressure-test.' },
+  },
+}
